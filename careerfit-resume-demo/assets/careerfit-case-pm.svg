@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="2000" viewBox="0 0 1440 2000">
+<rect x="0" y="0" width="1440" height="2000" fill="#f4f5f7" rx="0"/>
+<rect x="0" y="0" width="1440" height="178" fill="#0f172a" rx="0"/>
+<rect x="0" y="174" width="1440" height="4" fill="#10b981" rx="0"/>
+<text x="60" y="58" font-family="Noto Sans CJK SC" font-size="13" fill="#34d399" font-weight="bold" text-anchor="start" letter-spacing="3">CASE STUDY 01 · AI 产品实习方向</text>
+<text x="60" y="102" font-family="Noto Sans CJK SC" font-size="30" fill="#ffffff" font-weight="bold" text-anchor="start">从"只有社群和课程作业"到可投递：一次完整的简历优化</text>
+<text x="60" y="140" font-family="Noto Sans CJK SC" font-size="15" fill="#94a3b8" font-weight="normal" text-anchor="start">输入 JD + 真实经历 → 匹配诊断 → 表达重写 → 4 周补齐项目 → 投递节奏，一条链路讲完</text>
+<text x="1380" y="58" font-family="Noto Sans CJK SC" font-size="13" fill="#475569" font-weight="normal" text-anchor="end">CareerFit Resume Demo</text>
+<text x="1380" y="140" font-family="Noto Sans CJK SC" font-size="14" fill="#cbd5e1" font-weight="normal" text-anchor="end">市场营销 · 大三 · 零正式实习</text>
+<rect x="60" y="222" width="34" height="34" fill="#0f172a" rx="10"/>
+<text x="77" y="246" font-family="Noto Sans CJK SC" font-size="17" fill="#34d399" font-weight="bold" text-anchor="middle">1</text>
+<text x="108" y="245" font-family="Noto Sans CJK SC" font-size="19" fill="#0f172a" font-weight="bold" text-anchor="start">输入：一个真实处境的求职者 × 一份不好啃的 JD</text>
+<rect x="63" y="277" width="610" height="268" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="60" y="272" width="610" height="268" fill="#ffffff" rx="16" stroke="#e2e8f0" stroke-width="1"/>
+<circle cx="120" cy="338" r="30" fill="#0f172a"/>
+<text x="120" y="346" font-family="Noto Sans CJK SC" font-size="20" fill="#34d399" font-weight="bold" text-anchor="middle">林</text>
+<text x="168" y="332" font-family="Noto Sans CJK SC" font-size="17" fill="#1e293b" font-weight="bold" text-anchor="start">小林（虚构人物）</text>
+<text x="168" y="356" font-family="Noto Sans CJK SC" font-size="13" fill="#64748b" font-weight="normal" text-anchor="start">某双非院校 市场营销专业 大三 · 想投：AI 产品助理实习</text>
+<circle cx="104" cy="393" r="3" fill="#10b981"/>
+<text x="118" y="398" font-family="Noto Sans CJK SC" font-size="13.5" fill="#334155" font-weight="normal" text-anchor="start">运营 300 人考研互助社群：答疑排班、打卡机制、12 期主题活动</text>
+<circle cx="104" cy="420" r="3" fill="#10b981"/>
+<text x="118" y="425" font-family="Noto Sans CJK SC" font-size="13.5" fill="#334155" font-weight="normal" text-anchor="start">课程作业：用 ChatGPT + 秘塔完成奶茶品牌竞品调研（20 页报告）</text>
+<circle cx="104" cy="447" r="3" fill="#10b981"/>
+<text x="118" y="452" font-family="Noto Sans CJK SC" font-size="13.5" fill="#334155" font-weight="normal" text-anchor="start">工具：Excel / PPT / Canva，AI 工具日常高频使用</text>
+<rect x="84" y="471" width="562" height="40" fill="#fff7ed" rx="8" stroke="#fed7aa" stroke-width="1"/>
+<text x="100" y="496" font-family="Noto Sans CJK SC" font-size="12.5" fill="#9a3412" font-weight="normal" text-anchor="start">困境：简历上只敢写"负责社群管理""熟练使用 AI 工具"，投了 12 家 0 回复。</text>
+<rect x="713" y="277" width="670" height="268" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="710" y="272" width="670" height="268" fill="#ffffff" rx="16" stroke="#e2e8f0" stroke-width="1"/>
+<text x="738" y="316" font-family="Noto Sans CJK SC" font-size="13" fill="#64748b" font-weight="bold" text-anchor="start">目标岗位</text>
+<text x="738" y="344" font-family="Noto Sans CJK SC" font-size="17" fill="#1e293b" font-weight="bold" text-anchor="start">AI 产品助理实习生（某大模型应用公司）</text>
+<text x="738" y="372" font-family="Noto Sans CJK SC" font-size="13" fill="#64748b" font-weight="bold" text-anchor="start">JD 关键要求（工具自动提取）</text>
+<rect x="738" y="386" width="99.0" height="26" fill="#eef2ff" rx="13" stroke="#c7d2fe" stroke-width="1"/>
+<text x="750" y="404" font-family="Noto Sans CJK SC" font-size="12.5" fill="#3730a3" font-weight="normal" text-anchor="start">用户需求调研</text>
+<rect x="847.0" y="386" width="74.0" height="26" fill="#eef2ff" rx="13" stroke="#c7d2fe" stroke-width="1"/>
+<text x="859.0" y="404" font-family="Noto Sans CJK SC" font-size="12.5" fill="#3730a3" font-weight="normal" text-anchor="start">竞品分析</text>
+<rect x="931.0" y="386" width="135.5" height="26" fill="#eef2ff" rx="13" stroke="#c7d2fe" stroke-width="1"/>
+<text x="943.0" y="404" font-family="Noto Sans CJK SC" font-size="12.5" fill="#3730a3" font-weight="normal" text-anchor="start">Prompt 编写与调优</text>
+<rect x="1076.5" y="386" width="99.0" height="26" fill="#eef2ff" rx="13" stroke="#c7d2fe" stroke-width="1"/>
+<text x="1088.5" y="404" font-family="Noto Sans CJK SC" font-size="12.5" fill="#3730a3" font-weight="normal" text-anchor="start">用户反馈整理</text>
+<rect x="1185.5" y="386" width="74.0" height="26" fill="#eef2ff" rx="13" stroke="#c7d2fe" stroke-width="1"/>
+<text x="1197.5" y="404" font-family="Noto Sans CJK SC" font-size="12.5" fill="#3730a3" font-weight="normal" text-anchor="start">产品文档</text>
+<rect x="738" y="420" width="86.5" height="26" fill="#eef2ff" rx="13" stroke="#c7d2fe" stroke-width="1"/>
+<text x="750" y="438" font-family="Noto Sans CJK SC" font-size="12.5" fill="#3730a3" font-weight="normal" text-anchor="start">跨部门沟通</text>
+<rect x="738" y="472" width="614" height="58" fill="#f8fafc" rx="8" stroke="#e2e8f0" stroke-width="1"/>
+<text x="754" y="495" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">JD 原文摘录："参与 AI 产品的竞品跟踪与用户反馈分析，协助产出需求文档；</text>
+<text x="754" y="516" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">对 Prompt 工程有实践经验者优先。"</text>
+<rect x="60" y="572" width="34" height="34" fill="#0f172a" rx="10"/>
+<text x="77" y="596" font-family="Noto Sans CJK SC" font-size="17" fill="#34d399" font-weight="bold" text-anchor="middle">2</text>
+<text x="108" y="595" font-family="Noto Sans CJK SC" font-size="19" fill="#0f172a" font-weight="bold" text-anchor="start">匹配诊断：先搞清差在哪，再谈怎么改</text>
+<text x="447.0" y="595" font-family="Noto Sans CJK SC" font-size="13" fill="#64748b" font-weight="normal" text-anchor="start">五维评分 · 每一分都有依据</text>
+<rect x="63" y="627" width="880" height="260" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="60" y="622" width="880" height="260" fill="#ffffff" rx="16" stroke="#e2e8f0" stroke-width="1"/>
+<text x="88" y="671" font-family="Noto Sans CJK SC" font-size="13.5" fill="#334155" font-weight="bold" text-anchor="start">岗位核心技能</text>
+<rect x="250" y="658" width="420" height="16" fill="#e2e8f0" rx="8"/>
+<rect x="250" y="658" width="168.0" height="16" fill="#f59e0b" rx="8"/>
+<text x="686" y="671" font-family="Noto Sans CJK SC" font-size="13.5" fill="#0f172a" font-weight="bold" text-anchor="start">16/40</text>
+<text x="750" y="671" font-family="Noto Sans CJK SC" font-size="12" fill="#64748b" font-weight="normal" text-anchor="start">缺产品方法论的直接证据</text>
+<text x="88" y="713" font-family="Noto Sans CJK SC" font-size="13.5" fill="#334155" font-weight="bold" text-anchor="start">经历相关度</text>
+<rect x="250" y="700" width="420" height="16" fill="#e2e8f0" rx="8"/>
+<rect x="250" y="700" width="235.2" height="16" fill="#10b981" rx="8"/>
+<text x="686" y="713" font-family="Noto Sans CJK SC" font-size="13.5" fill="#0f172a" font-weight="bold" text-anchor="start">14/25</text>
+<text x="750" y="713" font-family="Noto Sans CJK SC" font-size="12" fill="#64748b" font-weight="normal" text-anchor="start">社群运营 ≈ 用户触点，可迁移</text>
+<text x="88" y="755" font-family="Noto Sans CJK SC" font-size="13.5" fill="#334155" font-weight="bold" text-anchor="start">工具 / AI 能力</text>
+<rect x="250" y="742" width="420" height="16" fill="#e2e8f0" rx="8"/>
+<rect x="250" y="742" width="308.0" height="16" fill="#10b981" rx="8"/>
+<text x="686" y="755" font-family="Noto Sans CJK SC" font-size="13.5" fill="#0f172a" font-weight="bold" text-anchor="start">11/15</text>
+<text x="750" y="755" font-family="Noto Sans CJK SC" font-size="12" fill="#64748b" font-weight="normal" text-anchor="start">高频使用，但缺系统性输出</text>
+<text x="88" y="797" font-family="Noto Sans CJK SC" font-size="13.5" fill="#334155" font-weight="bold" text-anchor="start">表达与协作</text>
+<rect x="250" y="784" width="420" height="16" fill="#e2e8f0" rx="8"/>
+<rect x="250" y="784" width="294.0" height="16" fill="#10b981" rx="8"/>
+<text x="686" y="797" font-family="Noto Sans CJK SC" font-size="13.5" fill="#0f172a" font-weight="bold" text-anchor="start">7/10</text>
+<text x="750" y="797" font-family="Noto Sans CJK SC" font-size="12" fill="#64748b" font-weight="normal" text-anchor="start">路演与社群答疑可作证据</text>
+<text x="88" y="839" font-family="Noto Sans CJK SC" font-size="13.5" fill="#334155" font-weight="bold" text-anchor="start">学习潜力</text>
+<rect x="250" y="826" width="420" height="16" fill="#e2e8f0" rx="8"/>
+<rect x="250" y="826" width="336.0" height="16" fill="#10b981" rx="8"/>
+<text x="686" y="839" font-family="Noto Sans CJK SC" font-size="13.5" fill="#0f172a" font-weight="bold" text-anchor="start">8/10</text>
+<text x="750" y="839" font-family="Noto Sans CJK SC" font-size="12" fill="#64748b" font-weight="normal" text-anchor="start">跨专业自学 AI 工具</text>
+<rect x="983" y="627" width="400" height="260" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="980" y="622" width="400" height="260" fill="#ffffff" rx="16" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1180" y="716" font-family="Noto Sans CJK SC" font-size="64" fill="#0f172a" font-weight="bold" text-anchor="middle">56</text>
+<text x="1180" y="746" font-family="Noto Sans CJK SC" font-size="13" fill="#64748b" font-weight="normal" text-anchor="middle">/ 100 综合匹配度</text>
+<rect x="1030" y="776" width="300" height="34" fill="#fffbeb" rx="17" stroke="#fde68a" stroke-width="1"/>
+<text x="1180" y="799" font-family="Noto Sans CJK SC" font-size="13" fill="#b45309" font-weight="bold" text-anchor="middle">可投递，但当前竞争力偏弱</text>
+<text x="1180" y="844" font-family="Noto Sans CJK SC" font-size="12" fill="#64748b" font-weight="normal" text-anchor="middle">结论：先重写表达（当天见效），再用 4 周补一个可展示项目</text>
+<rect x="60" y="916" width="34" height="34" fill="#0f172a" rx="10"/>
+<text x="77" y="940" font-family="Noto Sans CJK SC" font-size="17" fill="#34d399" font-weight="bold" text-anchor="middle">3</text>
+<text x="108" y="939" font-family="Noto Sans CJK SC" font-size="19" fill="#0f172a" font-weight="bold" text-anchor="start">表达重写：同样的经历，换一种 HR 能看懂的讲法</text>
+<text x="546.56" y="939" font-family="Noto Sans CJK SC" font-size="13" fill="#64748b" font-weight="normal" text-anchor="start">保守版 · 不编造 · 缺数据写"建议补充"</text>
+<rect x="63" y="971" width="600" height="430" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="60" y="966" width="600" height="430" fill="#ffffff" rx="16" stroke="#fecaca" stroke-width="1"/>
+<rect x="60" y="966" width="600" height="46" fill="#fef2f2" rx="16"/>
+<rect x="60" y="996" width="600" height="16" fill="#fef2f2" rx="0"/>
+<text x="88" y="996" font-family="Noto Sans CJK SC" font-size="15" fill="#b91c1c" font-weight="bold" text-anchor="start">优化前 · 学生简历的典型写法</text>
+<text x="92" y="1044" font-family="Noto Sans CJK SC" font-size="14.5" fill="#1e293b" font-weight="normal" text-anchor="start">“负责社群日常管理”</text>
+<rect x="102" y="1056" width="146.5" height="22" fill="#fef2f2" rx="11" stroke="#fecaca" stroke-width="1"/>
+<text x="112" y="1071.5" font-family="Noto Sans CJK SC" font-size="11.5" fill="#b91c1c" font-weight="normal" text-anchor="start">看不出对象、规模、动作</text>
+<text x="92" y="1120" font-family="Noto Sans CJK SC" font-size="14.5" fill="#1e293b" font-weight="normal" text-anchor="start">“熟练使用 ChatGPT 等 AI 工具”</text>
+<rect x="102" y="1132" width="158.0" height="22" fill="#fef2f2" rx="11" stroke="#fecaca" stroke-width="1"/>
+<text x="112" y="1147.5" font-family="Noto Sans CJK SC" font-size="11.5" fill="#b91c1c" font-weight="normal" text-anchor="start">"熟练"没有任何证据支撑</text>
+<text x="92" y="1196" font-family="Noto Sans CJK SC" font-size="14.5" fill="#1e293b" font-weight="normal" text-anchor="start">“参与课程调研项目”</text>
+<rect x="102" y="1208" width="175.94" height="22" fill="#fef2f2" rx="11" stroke="#fecaca" stroke-width="1"/>
+<text x="112" y="1223.5" font-family="Noto Sans CJK SC" font-size="11.5" fill="#b91c1c" font-weight="normal" text-anchor="start">"参与"=贡献不明，必被追问</text>
+<rect x="88" y="1268" width="544" height="84" fill="#f8fafc" rx="10" stroke="#e2e8f0" stroke-width="1"/>
+<text x="104" y="1294" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">HR 视角：三行都是"岗位名词"，没有一行能对上 JD 里的</text>
+<text x="104" y="1316" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">"需求调研 / 竞品分析 / Prompt 实践"任何一条，</text>
+<text x="104" y="1338" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">10 秒扫描后大概率直接划走。</text>
+<path d="M 672 1170 L 716 1170 M 704 1159 L 716 1170 L 704 1181" stroke="#10b981" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+<rect x="733" y="971" width="650" height="430" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="730" y="966" width="650" height="430" fill="#ffffff" rx="16" stroke="#a7f3d0" stroke-width="1"/>
+<rect x="730" y="966" width="650" height="46" fill="#ecfdf5" rx="16"/>
+<rect x="730" y="996" width="650" height="16" fill="#ecfdf5" rx="0"/>
+<text x="758" y="996" font-family="Noto Sans CJK SC" font-size="15" fill="#047857" font-weight="bold" text-anchor="start">优化后 · 保守版（全部来自真实经历，可直接使用）</text>
+<circle cx="762" cy="1039" r="3.5" fill="#10b981"/>
+<text x="778" y="1044" font-family="Noto Sans CJK SC" font-size="13.5" fill="#1e293b" font-weight="normal" text-anchor="start">运营 300 人考研互助社群：设计每周答疑排班与打卡机制，</text>
+<text x="778" y="1067" font-family="Noto Sans CJK SC" font-size="13.5" fill="#1e293b" font-weight="normal" text-anchor="start">主导 12 期主题活动的选题、执行与复盘</text>
+<rect x="778" y="1080" width="270.7" height="22" fill="#ecfdf5" rx="11" stroke="#a7f3d0" stroke-width="1"/>
+<text x="788" y="1095.5" font-family="Noto Sans CJK SC" font-size="11.5" fill="#0e7a5f" font-weight="normal" text-anchor="start">用户运营证据 → 对应"需求调研 / 用户反馈"</text>
+<circle cx="762" cy="1127" r="3.5" fill="#10b981"/>
+<text x="778" y="1132" font-family="Noto Sans CJK SC" font-size="13.5" fill="#1e293b" font-weight="normal" text-anchor="start">用 ChatGPT + 秘塔完成奶茶品牌竞品调研：拆解 6 个品牌</text>
+<text x="778" y="1155" font-family="Noto Sans CJK SC" font-size="13.5" fill="#1e293b" font-weight="normal" text-anchor="start">定价与卖点，产出 20 页结构化报告并完成课堂路演</text>
+<rect x="778" y="1168" width="238.96" height="22" fill="#ecfdf5" rx="11" stroke="#a7f3d0" stroke-width="1"/>
+<text x="788" y="1183.5" font-family="Noto Sans CJK SC" font-size="11.5" fill="#0e7a5f" font-weight="normal" text-anchor="start">竞品分析全流程 → 直接命中 JD 第 2 条</text>
+<circle cx="762" cy="1215" r="3.5" fill="#10b981"/>
+<text x="778" y="1220" font-family="Noto Sans CJK SC" font-size="13.5" fill="#1e293b" font-weight="normal" text-anchor="start">调研中沉淀 10+ 条可复用提示词模板（信息提取 / 对比</text>
+<text x="778" y="1243" font-family="Noto Sans CJK SC" font-size="13.5" fill="#1e293b" font-weight="normal" text-anchor="start">表格 / 口径校验），形成个人 Prompt 素材库</text>
+<rect x="778" y="1256" width="307.96000000000004" height="22" fill="#ecfdf5" rx="11" stroke="#a7f3d0" stroke-width="1"/>
+<text x="788" y="1271.5" font-family="Noto Sans CJK SC" font-size="11.5" fill="#0e7a5f" font-weight="normal" text-anchor="start">Prompt 能力从"会用"变成"可交付" → 命中优先项</text>
+<rect x="60" y="1446" width="34" height="34" fill="#0f172a" rx="10"/>
+<text x="77" y="1470" font-family="Noto Sans CJK SC" font-size="17" fill="#34d399" font-weight="bold" text-anchor="middle">4</text>
+<text x="108" y="1469" font-family="Noto Sans CJK SC" font-size="19" fill="#0f172a" font-weight="bold" text-anchor="start">差距不硬扛：一个 4 周就能完成的补齐项目</text>
+<text x="497.92" y="1469" font-family="Noto Sans CJK SC" font-size="13" fill="#64748b" font-weight="normal" text-anchor="start">候选方案 · 是否执行由用户决定</text>
+<rect x="63" y="1501" width="1320" height="240" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="60" y="1496" width="1320" height="240" fill="#ffffff" rx="16" stroke="#e2e8f0" stroke-width="1"/>
+<text x="88" y="1536" font-family="Noto Sans CJK SC" font-size="16" fill="#0f172a" font-weight="bold" text-anchor="start">候选补齐项目：3 款 AI 产品横向评测</text>
+<text x="385.76" y="1536" font-family="Noto Sans CJK SC" font-size="13" fill="#64748b" font-weight="normal" text-anchor="start">目标：把"产品感"变成一份看得见的公开交付物</text>
+<rect x="88" y="1562" width="300" height="84" fill="#f8fafc" rx="10" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="88" y="1562" width="300" height="28" fill="#0f172a" rx="10"/>
+<rect x="88" y="1576" width="300" height="14" fill="#0f172a" rx="0"/>
+<text x="102" y="1582" font-family="Noto Sans CJK SC" font-size="12.5" fill="#34d399" font-weight="bold" text-anchor="start">WEEK 1 · 定框架</text>
+<text x="102" y="1610" font-family="Noto Sans CJK SC" font-size="12" fill="#334155" font-weight="normal" text-anchor="start">选 3 款同类 AI 产品</text>
+<text x="102" y="1631" font-family="Noto Sans CJK SC" font-size="12" fill="#334155" font-weight="normal" text-anchor="start">定 5 个评测维度与任务集</text>
+<path d="M 390 1604 L 404 1604" stroke="#94a3b8" stroke-width="2"/>
+<rect x="406" y="1562" width="300" height="84" fill="#f8fafc" rx="10" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="406" y="1562" width="300" height="28" fill="#0f172a" rx="10"/>
+<rect x="406" y="1576" width="300" height="14" fill="#0f172a" rx="0"/>
+<text x="420" y="1582" font-family="Noto Sans CJK SC" font-size="12.5" fill="#34d399" font-weight="bold" text-anchor="start">WEEK 2 · 做实测</text>
+<text x="420" y="1610" font-family="Noto Sans CJK SC" font-size="12" fill="#334155" font-weight="normal" text-anchor="start">同一组任务跑 3 款产品</text>
+<text x="420" y="1631" font-family="Noto Sans CJK SC" font-size="12" fill="#334155" font-weight="normal" text-anchor="start">逐项记录 + 截图存证</text>
+<path d="M 708 1604 L 722 1604" stroke="#94a3b8" stroke-width="2"/>
+<rect x="724" y="1562" width="300" height="84" fill="#f8fafc" rx="10" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="724" y="1562" width="300" height="28" fill="#0f172a" rx="10"/>
+<rect x="724" y="1576" width="300" height="14" fill="#0f172a" rx="0"/>
+<text x="738" y="1582" font-family="Noto Sans CJK SC" font-size="12.5" fill="#34d399" font-weight="bold" text-anchor="start">WEEK 3 · 出报告</text>
+<text x="738" y="1610" font-family="Noto Sans CJK SC" font-size="12" fill="#334155" font-weight="normal" text-anchor="start">对比表 + 结论 + 改进建议</text>
+<text x="738" y="1631" font-family="Noto Sans CJK SC" font-size="12" fill="#334155" font-weight="normal" text-anchor="start">发布到公开平台</text>
+<path d="M 1026 1604 L 1040 1604" stroke="#94a3b8" stroke-width="2"/>
+<rect x="1042" y="1562" width="300" height="84" fill="#f8fafc" rx="10" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="1042" y="1562" width="300" height="28" fill="#0f172a" rx="10"/>
+<rect x="1042" y="1576" width="300" height="14" fill="#0f172a" rx="0"/>
+<text x="1056" y="1582" font-family="Noto Sans CJK SC" font-size="12.5" fill="#34d399" font-weight="bold" text-anchor="start">WEEK 4 · 做迭代</text>
+<text x="1056" y="1610" font-family="Noto Sans CJK SC" font-size="12" fill="#334155" font-weight="normal" text-anchor="start">收集 10+ 条真实反馈</text>
+<text x="1056" y="1631" font-family="Noto Sans CJK SC" font-size="12" fill="#334155" font-weight="normal" text-anchor="start">补 FAQ，输出复盘</text>
+<rect x="88" y="1662" width="1264" height="52" fill="#ecfdf5" rx="10" stroke="#a7f3d0" stroke-width="1"/>
+<text x="104" y="1684" font-family="Noto Sans CJK SC" font-size="12.5" fill="#047857" font-weight="bold" text-anchor="start">完成后简历可以这样写："独立完成 3 款 AI 产品横向评测：建立 5 维评测框架，产出公开报告并根据用户反馈迭代一版。"</text>
+<text x="104" y="1705" font-family="Noto Sans CJK SC" font-size="12" fill="#9a3412" font-weight="normal" text-anchor="start">完成前这句话不允许出现在简历里——这是本工具的真实性红线。</text>
+<rect x="60" y="1766" width="34" height="34" fill="#0f172a" rx="10"/>
+<text x="77" y="1790" font-family="Noto Sans CJK SC" font-size="17" fill="#34d399" font-weight="bold" text-anchor="middle">5</text>
+<text x="108" y="1789" font-family="Noto Sans CJK SC" font-size="19" fill="#0f172a" font-weight="bold" text-anchor="start">投递策略：不是"改完就投"，而是一套节奏</text>
+<rect x="63" y="1821" width="424" height="118" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="60" y="1816" width="424" height="118" fill="#ffffff" rx="16" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="60" y="1816" width="424" height="8" fill="#10b981" rx="4"/>
+<text x="84" y="1852" font-family="Noto Sans CJK SC" font-size="14.5" fill="#0f172a" font-weight="bold" text-anchor="start">现在 · 用优化后简历</text>
+<text x="84" y="1880" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">投 AI 运营 / 内容类实习（匹配度更高），</text>
+<text x="84" y="1902" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">积累面试经验，打招呼语引用社群数据</text>
+<rect x="511" y="1821" width="424" height="118" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="508" y="1816" width="424" height="118" fill="#ffffff" rx="16" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="508" y="1816" width="424" height="8" fill="#f59e0b" rx="4"/>
+<text x="532" y="1852" font-family="Noto Sans CJK SC" font-size="14.5" fill="#0f172a" font-weight="bold" text-anchor="start">同步 · 补产品证据</text>
+<text x="532" y="1880" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">执行 4 周评测项目，</text>
+<text x="532" y="1902" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">每周产出物即时沉淀进背景 JSON</text>
+<rect x="959" y="1821" width="424" height="118" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="956" y="1816" width="424" height="118" fill="#ffffff" rx="16" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="956" y="1816" width="424" height="8" fill="#6366f1" rx="4"/>
+<text x="980" y="1852" font-family="Noto Sans CJK SC" font-size="14.5" fill="#0f172a" font-weight="bold" text-anchor="start">4 周后 · 冲目标岗</text>
+<text x="980" y="1880" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">重投 AI 产品助理岗：简历新增评测项目，</text>
+<text x="980" y="1902" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">面试用报告链接讲完整方法论</text>
+<text x="60" y="1972" font-family="Noto Sans CJK SC" font-size="12" fill="#94a3b8" font-weight="normal" text-anchor="start">示意案例：人物与经历为虚构组合，分析逻辑与输出结构来自本工具真实 Prompt 链路（prompts/01-10） · 生成入口：index.html / docs/copy-paste-simple-prompt.md · 不编造经历 · 不承诺 offer</text>
+</svg>

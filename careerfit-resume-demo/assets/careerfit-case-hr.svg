@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="2000" viewBox="0 0 1440 2000">
+<rect x="0" y="0" width="1440" height="2000" fill="#f4f5f7" rx="0"/>
+<rect x="0" y="0" width="1440" height="178" fill="#0f172a" rx="0"/>
+<rect x="0" y="174" width="1440" height="4" fill="#10b981" rx="0"/>
+<text x="60" y="58" font-family="Noto Sans CJK SC" font-size="13" fill="#34d399" font-weight="bold" text-anchor="start" letter-spacing="3">CASE STUDY 02 · HR 实习方向</text>
+<text x="60" y="102" font-family="Noto Sans CJK SC" font-size="30" fill="#ffffff" font-weight="bold" text-anchor="start">把"学生会干部"翻译成 HR 语言：一次完整的简历优化</text>
+<text x="60" y="140" font-family="Noto Sans CJK SC" font-size="15" fill="#94a3b8" font-weight="normal" text-anchor="start">输入 JD + 真实经历 → 匹配诊断 → 表达重写 → 4 周补齐项目 → 投递节奏，一条链路讲完</text>
+<text x="1380" y="58" font-family="Noto Sans CJK SC" font-size="13" fill="#475569" font-weight="normal" text-anchor="end">CareerFit Resume Demo</text>
+<text x="1380" y="140" font-family="Noto Sans CJK SC" font-size="14" fill="#cbd5e1" font-weight="normal" text-anchor="end">行政管理 · 大二 · 零实习</text>
+<rect x="60" y="222" width="34" height="34" fill="#0f172a" rx="10"/>
+<text x="77" y="246" font-family="Noto Sans CJK SC" font-size="17" fill="#34d399" font-weight="bold" text-anchor="middle">1</text>
+<text x="108" y="245" font-family="Noto Sans CJK SC" font-size="19" fill="#0f172a" font-weight="bold" text-anchor="start">输入：一个真实处境的求职者 × 一份不好啃的 JD</text>
+<rect x="63" y="277" width="610" height="268" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="60" y="272" width="610" height="268" fill="#ffffff" rx="16" stroke="#e2e8f0" stroke-width="1"/>
+<circle cx="120" cy="338" r="30" fill="#0f172a"/>
+<text x="120" y="346" font-family="Noto Sans CJK SC" font-size="20" fill="#34d399" font-weight="bold" text-anchor="middle">周</text>
+<text x="168" y="332" font-family="Noto Sans CJK SC" font-size="17" fill="#1e293b" font-weight="bold" text-anchor="start">小周（虚构人物）</text>
+<text x="168" y="356" font-family="Noto Sans CJK SC" font-size="13" fill="#64748b" font-weight="normal" text-anchor="start">某一本院校 行政管理专业 大二 · 想投：HR 实习生（招聘方向）</text>
+<circle cx="104" cy="393" r="3" fill="#10b981"/>
+<text x="118" y="398" font-family="Noto Sans CJK SC" font-size="13.5" fill="#334155" font-weight="normal" text-anchor="start">学生会生活部副部长：统筹 3 场 200+ 人校园活动，管 20 人志愿者</text>
+<circle cx="104" cy="420" r="3" fill="#10b981"/>
+<text x="118" y="425" font-family="Noto Sans CJK SC" font-size="13.5" fill="#334155" font-weight="normal" text-anchor="start">协助辅导员核对归档 400+ 份新生档案，自建 Excel 核对清单</text>
+<circle cx="104" cy="447" r="3" fill="#10b981"/>
+<text x="118" y="452" font-family="Noto Sans CJK SC" font-size="13.5" fill="#334155" font-weight="normal" text-anchor="start">工具：Excel（函数 / 透视表入门）、腾讯文档、问卷星</text>
+<rect x="84" y="471" width="562" height="40" fill="#fff7ed" rx="8" stroke="#fed7aa" stroke-width="1"/>
+<text x="100" y="496" font-family="Noto Sans CJK SC" font-size="12.5" fill="#9a3412" font-weight="normal" text-anchor="start">困境：简历只有三行头衔，HR 岗位投递石沉大海，不知道自己到底缺什么。</text>
+<rect x="713" y="277" width="670" height="268" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="710" y="272" width="670" height="268" fill="#ffffff" rx="16" stroke="#e2e8f0" stroke-width="1"/>
+<text x="738" y="316" font-family="Noto Sans CJK SC" font-size="13" fill="#64748b" font-weight="bold" text-anchor="start">目标岗位</text>
+<text x="738" y="344" font-family="Noto Sans CJK SC" font-size="17" fill="#1e293b" font-weight="bold" text-anchor="start">人力资源实习生 · 招聘方向（某消费品公司）</text>
+<text x="738" y="372" font-family="Noto Sans CJK SC" font-size="13" fill="#64748b" font-weight="bold" text-anchor="start">JD 关键要求（工具自动提取）</text>
+<rect x="738" y="386" width="74.0" height="26" fill="#eef2ff" rx="13" stroke="#c7d2fe" stroke-width="1"/>
+<text x="750" y="404" font-family="Noto Sans CJK SC" font-size="12.5" fill="#3730a3" font-weight="normal" text-anchor="start">简历筛选</text>
+<rect x="822.0" y="386" width="111.5" height="26" fill="#eef2ff" rx="13" stroke="#c7d2fe" stroke-width="1"/>
+<text x="834.0" y="404" font-family="Noto Sans CJK SC" font-size="12.5" fill="#3730a3" font-weight="normal" text-anchor="start">面试安排与协调</text>
+<rect x="943.5" y="386" width="99.0" height="26" fill="#eef2ff" rx="13" stroke="#c7d2fe" stroke-width="1"/>
+<text x="955.5" y="404" font-family="Noto Sans CJK SC" font-size="12.5" fill="#3730a3" font-weight="normal" text-anchor="start">招聘渠道维护</text>
+<rect x="1052.5" y="386" width="99.0" height="26" fill="#eef2ff" rx="13" stroke="#c7d2fe" stroke-width="1"/>
+<text x="1064.5" y="404" font-family="Noto Sans CJK SC" font-size="12.5" fill="#3730a3" font-weight="normal" text-anchor="start">员工活动支持</text>
+<rect x="1161.5" y="386" width="116.0" height="26" fill="#eef2ff" rx="13" stroke="#c7d2fe" stroke-width="1"/>
+<text x="1173.5" y="404" font-family="Noto Sans CJK SC" font-size="12.5" fill="#3730a3" font-weight="normal" text-anchor="start">Excel 数据整理</text>
+<rect x="738" y="420" width="99.0" height="26" fill="#eef2ff" rx="13" stroke="#c7d2fe" stroke-width="1"/>
+<text x="750" y="438" font-family="Noto Sans CJK SC" font-size="12.5" fill="#3730a3" font-weight="normal" text-anchor="start">沟通细致耐心</text>
+<rect x="738" y="472" width="614" height="58" fill="#f8fafc" rx="8" stroke="#e2e8f0" stroke-width="1"/>
+<text x="754" y="495" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">JD 原文摘录："协助招聘专员完成简历初筛、面试邀约与数据台账维护；</text>
+<text x="754" y="516" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">支持月度员工活动的组织与执行。"</text>
+<rect x="60" y="572" width="34" height="34" fill="#0f172a" rx="10"/>
+<text x="77" y="596" font-family="Noto Sans CJK SC" font-size="17" fill="#34d399" font-weight="bold" text-anchor="middle">2</text>
+<text x="108" y="595" font-family="Noto Sans CJK SC" font-size="19" fill="#0f172a" font-weight="bold" text-anchor="start">匹配诊断：先搞清差在哪，再谈怎么改</text>
+<text x="447.0" y="595" font-family="Noto Sans CJK SC" font-size="13" fill="#64748b" font-weight="normal" text-anchor="start">五维评分 · 每一分都有依据</text>
+<rect x="63" y="627" width="880" height="260" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="60" y="622" width="880" height="260" fill="#ffffff" rx="16" stroke="#e2e8f0" stroke-width="1"/>
+<text x="88" y="671" font-family="Noto Sans CJK SC" font-size="13.5" fill="#334155" font-weight="bold" text-anchor="start">岗位核心技能</text>
+<rect x="250" y="658" width="420" height="16" fill="#e2e8f0" rx="8"/>
+<rect x="250" y="658" width="157.5" height="16" fill="#f59e0b" rx="8"/>
+<text x="686" y="671" font-family="Noto Sans CJK SC" font-size="13.5" fill="#0f172a" font-weight="bold" text-anchor="start">15/40</text>
+<text x="750" y="671" font-family="Noto Sans CJK SC" font-size="12" fill="#64748b" font-weight="normal" text-anchor="start">无招聘场景的直接经验</text>
+<text x="88" y="713" font-family="Noto Sans CJK SC" font-size="13.5" fill="#334155" font-weight="bold" text-anchor="start">经历相关度</text>
+<rect x="250" y="700" width="420" height="16" fill="#e2e8f0" rx="8"/>
+<rect x="250" y="700" width="252.0" height="16" fill="#10b981" rx="8"/>
+<text x="686" y="713" font-family="Noto Sans CJK SC" font-size="13.5" fill="#0f172a" font-weight="bold" text-anchor="start">15/25</text>
+<text x="750" y="713" font-family="Noto Sans CJK SC" font-size="12" fill="#64748b" font-weight="normal" text-anchor="start">志愿者招募 ≈ 微型招聘闭环</text>
+<text x="88" y="755" font-family="Noto Sans CJK SC" font-size="13.5" fill="#334155" font-weight="bold" text-anchor="start">工具 / 数据能力</text>
+<rect x="250" y="742" width="420" height="16" fill="#e2e8f0" rx="8"/>
+<rect x="250" y="742" width="280.0" height="16" fill="#10b981" rx="8"/>
+<text x="686" y="755" font-family="Noto Sans CJK SC" font-size="13.5" fill="#0f172a" font-weight="bold" text-anchor="start">10/15</text>
+<text x="750" y="755" font-family="Noto Sans CJK SC" font-size="12" fill="#64748b" font-weight="normal" text-anchor="start">Excel 有实操，缺台账场景</text>
+<text x="88" y="797" font-family="Noto Sans CJK SC" font-size="13.5" fill="#334155" font-weight="bold" text-anchor="start">表达与协作</text>
+<rect x="250" y="784" width="420" height="16" fill="#e2e8f0" rx="8"/>
+<rect x="250" y="784" width="336.0" height="16" fill="#10b981" rx="8"/>
+<text x="686" y="797" font-family="Noto Sans CJK SC" font-size="13.5" fill="#0f172a" font-weight="bold" text-anchor="start">8/10</text>
+<text x="750" y="797" font-family="Noto Sans CJK SC" font-size="12" fill="#64748b" font-weight="normal" text-anchor="start">跨部门统筹活动可作证据</text>
+<text x="88" y="839" font-family="Noto Sans CJK SC" font-size="13.5" fill="#334155" font-weight="bold" text-anchor="start">学习潜力</text>
+<rect x="250" y="826" width="420" height="16" fill="#e2e8f0" rx="8"/>
+<rect x="250" y="826" width="336.0" height="16" fill="#10b981" rx="8"/>
+<text x="686" y="839" font-family="Noto Sans CJK SC" font-size="13.5" fill="#0f172a" font-weight="bold" text-anchor="start">8/10</text>
+<text x="750" y="839" font-family="Noto Sans CJK SC" font-size="12" fill="#64748b" font-weight="normal" text-anchor="start">低年级 + 方向明确是加分</text>
+<rect x="983" y="627" width="400" height="260" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="980" y="622" width="400" height="260" fill="#ffffff" rx="16" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1180" y="716" font-family="Noto Sans CJK SC" font-size="64" fill="#0f172a" font-weight="bold" text-anchor="middle">56</text>
+<text x="1180" y="746" font-family="Noto Sans CJK SC" font-size="13" fill="#64748b" font-weight="normal" text-anchor="middle">/ 100 综合匹配度</text>
+<rect x="1030" y="776" width="300" height="34" fill="#fffbeb" rx="17" stroke="#fde68a" stroke-width="1"/>
+<text x="1180" y="799" font-family="Noto Sans CJK SC" font-size="13" fill="#b45309" font-weight="bold" text-anchor="middle">可投基础岗，关键在"翻译"</text>
+<text x="1180" y="844" font-family="Noto Sans CJK SC" font-size="12" fill="#64748b" font-weight="normal" text-anchor="middle">结论：经历本身够用，输在没写成 HR 能识别的语言</text>
+<rect x="60" y="916" width="34" height="34" fill="#0f172a" rx="10"/>
+<text x="77" y="940" font-family="Noto Sans CJK SC" font-size="17" fill="#34d399" font-weight="bold" text-anchor="middle">3</text>
+<text x="108" y="939" font-family="Noto Sans CJK SC" font-size="19" fill="#0f172a" font-weight="bold" text-anchor="start">表达重写：同样的经历，换一种 HR 能看懂的讲法</text>
+<text x="546.56" y="939" font-family="Noto Sans CJK SC" font-size="13" fill="#64748b" font-weight="normal" text-anchor="start">保守版 · 不编造 · 缺数据写"建议补充"</text>
+<rect x="63" y="971" width="600" height="430" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="60" y="966" width="600" height="430" fill="#ffffff" rx="16" stroke="#fecaca" stroke-width="1"/>
+<rect x="60" y="966" width="600" height="46" fill="#fef2f2" rx="16"/>
+<rect x="60" y="996" width="600" height="16" fill="#fef2f2" rx="0"/>
+<text x="88" y="996" font-family="Noto Sans CJK SC" font-size="15" fill="#b91c1c" font-weight="bold" text-anchor="start">优化前 · 学生简历的典型写法</text>
+<text x="92" y="1044" font-family="Noto Sans CJK SC" font-size="14.5" fill="#1e293b" font-weight="normal" text-anchor="start">“学生会生活部副部长”</text>
+<rect x="102" y="1056" width="146.5" height="22" fill="#fef2f2" rx="11" stroke="#fecaca" stroke-width="1"/>
+<text x="112" y="1071.5" font-family="Noto Sans CJK SC" font-size="11.5" fill="#b91c1c" font-weight="normal" text-anchor="start">只有头衔，没有任何内容</text>
+<text x="92" y="1120" font-family="Noto Sans CJK SC" font-size="14.5" fill="#1e293b" font-weight="normal" text-anchor="start">“组织过校园活动”</text>
+<rect x="102" y="1132" width="146.5" height="22" fill="#fef2f2" rx="11" stroke="#fecaca" stroke-width="1"/>
+<text x="112" y="1147.5" font-family="Noto Sans CJK SC" font-size="11.5" fill="#b91c1c" font-weight="normal" text-anchor="start">无规模、无分工、无结果</text>
+<text x="92" y="1196" font-family="Noto Sans CJK SC" font-size="14.5" fill="#1e293b" font-weight="normal" text-anchor="start">“帮老师整理过资料”</text>
+<rect x="102" y="1208" width="169.5" height="22" fill="#fef2f2" rx="11" stroke="#fecaca" stroke-width="1"/>
+<text x="112" y="1223.5" font-family="Noto Sans CJK SC" font-size="11.5" fill="#b91c1c" font-weight="normal" text-anchor="start">"资料"二字模糊到无法评估</text>
+<rect x="88" y="1268" width="544" height="84" fill="#f8fafc" rx="10" stroke="#e2e8f0" stroke-width="1"/>
+<text x="104" y="1294" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">HR 视角：招聘 HR 每天筛几百份实习简历，这三行</text>
+<text x="104" y="1316" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">既对不上"简历筛选 / 面试安排 / 台账"任何关键词，</text>
+<text x="104" y="1338" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">也给不出任何可追问的细节，只能归入"无相关经历"。</text>
+<path d="M 672 1170 L 716 1170 M 704 1159 L 716 1170 L 704 1181" stroke="#10b981" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+<rect x="733" y="971" width="650" height="430" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="730" y="966" width="650" height="430" fill="#ffffff" rx="16" stroke="#a7f3d0" stroke-width="1"/>
+<rect x="730" y="966" width="650" height="46" fill="#ecfdf5" rx="16"/>
+<rect x="730" y="996" width="650" height="16" fill="#ecfdf5" rx="0"/>
+<text x="758" y="996" font-family="Noto Sans CJK SC" font-size="15" fill="#047857" font-weight="bold" text-anchor="start">优化后 · 保守版（全部来自真实经历，可直接使用）</text>
+<circle cx="762" cy="1039" r="3.5" fill="#10b981"/>
+<text x="778" y="1044" font-family="Noto Sans CJK SC" font-size="13.5" fill="#1e293b" font-weight="normal" text-anchor="start">统筹 3 场 200+ 人校园活动：负责 20 人志愿者的招募、</text>
+<text x="778" y="1067" font-family="Noto Sans CJK SC" font-size="13.5" fill="#1e293b" font-weight="normal" text-anchor="start">面试分工与现场排班，全程零重大执行事故</text>
+<rect x="778" y="1080" width="270.7" height="22" fill="#ecfdf5" rx="11" stroke="#a7f3d0" stroke-width="1"/>
+<text x="788" y="1095.5" font-family="Noto Sans CJK SC" font-size="11.5" fill="#0e7a5f" font-weight="normal" text-anchor="start">志愿者招募 = 微型招聘全流程 → 命中核心职责</text>
+<circle cx="762" cy="1127" r="3.5" fill="#10b981"/>
+<text x="778" y="1132" font-family="Noto Sans CJK SC" font-size="13.5" fill="#1e293b" font-weight="normal" text-anchor="start">协助完成 400+ 份新生档案核对与归档：自建 Excel 核对</text>
+<text x="778" y="1155" font-family="Noto Sans CJK SC" font-size="13.5" fill="#1e293b" font-weight="normal" text-anchor="start">清单双人复核，错漏率下降（具体数据建议补充）</text>
+<rect x="778" y="1168" width="239.88" height="22" fill="#ecfdf5" rx="11" stroke="#a7f3d0" stroke-width="1"/>
+<text x="788" y="1183.5" font-family="Noto Sans CJK SC" font-size="11.5" fill="#0e7a5f" font-weight="normal" text-anchor="start">台账与数据整理证据 → 缺数据处如实标注</text>
+<circle cx="762" cy="1215" r="3.5" fill="#10b981"/>
+<text x="778" y="1220" font-family="Noto Sans CJK SC" font-size="13.5" fill="#1e293b" font-weight="normal" text-anchor="start">每场活动后组织志愿者复盘会并输出改进清单，</text>
+<text x="778" y="1243" font-family="Noto Sans CJK SC" font-size="13.5" fill="#1e293b" font-weight="normal" text-anchor="start">次场活动筹备周期明显缩短</text>
+<rect x="778" y="1256" width="228.38" height="22" fill="#ecfdf5" rx="11" stroke="#a7f3d0" stroke-width="1"/>
+<text x="788" y="1271.5" font-family="Noto Sans CJK SC" font-size="11.5" fill="#0e7a5f" font-weight="normal" text-anchor="start">流程改进意识 → 对应"员工活动支持"</text>
+<rect x="60" y="1446" width="34" height="34" fill="#0f172a" rx="10"/>
+<text x="77" y="1470" font-family="Noto Sans CJK SC" font-size="17" fill="#34d399" font-weight="bold" text-anchor="middle">4</text>
+<text x="108" y="1469" font-family="Noto Sans CJK SC" font-size="19" fill="#0f172a" font-weight="bold" text-anchor="start">差距不硬扛：一个 4 周就能完成的补齐项目</text>
+<text x="497.92" y="1469" font-family="Noto Sans CJK SC" font-size="13" fill="#64748b" font-weight="normal" text-anchor="start">候选方案 · 是否执行由用户决定</text>
+<rect x="63" y="1501" width="1320" height="240" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="60" y="1496" width="1320" height="240" fill="#ffffff" rx="16" stroke="#e2e8f0" stroke-width="1"/>
+<text x="88" y="1536" font-family="Noto Sans CJK SC" font-size="16" fill="#0f172a" font-weight="bold" text-anchor="start">候选补齐项目：主导一次社团纳新全流程</text>
+<text x="396.0" y="1536" font-family="Noto Sans CJK SC" font-size="13" fill="#64748b" font-weight="normal" text-anchor="start">目标：把"类招聘"经历升级成带数据的真招聘闭环</text>
+<rect x="88" y="1562" width="300" height="84" fill="#f8fafc" rx="10" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="88" y="1562" width="300" height="28" fill="#0f172a" rx="10"/>
+<rect x="88" y="1576" width="300" height="14" fill="#0f172a" rx="0"/>
+<text x="102" y="1582" font-family="Noto Sans CJK SC" font-size="12.5" fill="#34d399" font-weight="bold" text-anchor="start">WEEK 1 · 学标准</text>
+<text x="102" y="1610" font-family="Noto Sans CJK SC" font-size="12" fill="#334155" font-weight="normal" text-anchor="start">拆解 3 份 HR 实习 JD</text>
+<text x="102" y="1631" font-family="Noto Sans CJK SC" font-size="12" fill="#334155" font-weight="normal" text-anchor="start">写出岗位画像与筛选标准</text>
+<path d="M 390 1604 L 404 1604" stroke="#94a3b8" stroke-width="2"/>
+<rect x="406" y="1562" width="300" height="84" fill="#f8fafc" rx="10" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="406" y="1562" width="300" height="28" fill="#0f172a" rx="10"/>
+<rect x="406" y="1576" width="300" height="14" fill="#0f172a" rx="0"/>
+<text x="420" y="1582" font-family="Noto Sans CJK SC" font-size="12.5" fill="#34d399" font-weight="bold" text-anchor="start">WEEK 2 · 建工具</text>
+<text x="420" y="1610" font-family="Noto Sans CJK SC" font-size="12" fill="#334155" font-weight="normal" text-anchor="start">设计报名筛选表</text>
+<text x="420" y="1631" font-family="Noto Sans CJK SC" font-size="12" fill="#334155" font-weight="normal" text-anchor="start">编 10 题结构化面试题库</text>
+<path d="M 708 1604 L 722 1604" stroke="#94a3b8" stroke-width="2"/>
+<rect x="724" y="1562" width="300" height="84" fill="#f8fafc" rx="10" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="724" y="1562" width="300" height="28" fill="#0f172a" rx="10"/>
+<rect x="724" y="1576" width="300" height="14" fill="#0f172a" rx="0"/>
+<text x="738" y="1582" font-family="Noto Sans CJK SC" font-size="12.5" fill="#34d399" font-weight="bold" text-anchor="start">WEEK 3 · 真执行</text>
+<text x="738" y="1610" font-family="Noto Sans CJK SC" font-size="12" fill="#334155" font-weight="normal" text-anchor="start">在社团纳新中实际使用</text>
+<text x="738" y="1631" font-family="Noto Sans CJK SC" font-size="12" fill="#334155" font-weight="normal" text-anchor="start">记录各环节转化数据</text>
+<path d="M 1026 1604 L 1040 1604" stroke="#94a3b8" stroke-width="2"/>
+<rect x="1042" y="1562" width="300" height="84" fill="#f8fafc" rx="10" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="1042" y="1562" width="300" height="28" fill="#0f172a" rx="10"/>
+<rect x="1042" y="1576" width="300" height="14" fill="#0f172a" rx="0"/>
+<text x="1056" y="1582" font-family="Noto Sans CJK SC" font-size="12.5" fill="#34d399" font-weight="bold" text-anchor="start">WEEK 4 · 写复盘</text>
+<text x="1056" y="1610" font-family="Noto Sans CJK SC" font-size="12" fill="#334155" font-weight="normal" text-anchor="start">输出带数据的纳新复盘</text>
+<text x="1056" y="1631" font-family="Noto Sans CJK SC" font-size="12" fill="#334155" font-weight="normal" text-anchor="start">沉淀可复用流程文档</text>
+<rect x="88" y="1662" width="1264" height="52" fill="#ecfdf5" rx="10" stroke="#a7f3d0" stroke-width="1"/>
+<text x="104" y="1684" font-family="Noto Sans CJK SC" font-size="12.5" fill="#047857" font-weight="bold" text-anchor="start">完成后简历可以这样写："主导社团纳新全流程：制定筛选标准与面试题库，覆盖 xx 名候选人，输出数据复盘报告。"</text>
+<text x="104" y="1705" font-family="Noto Sans CJK SC" font-size="12" fill="#9a3412" font-weight="normal" text-anchor="start">完成前这句话不允许出现在简历里——这是本工具的真实性红线。</text>
+<rect x="60" y="1766" width="34" height="34" fill="#0f172a" rx="10"/>
+<text x="77" y="1790" font-family="Noto Sans CJK SC" font-size="17" fill="#34d399" font-weight="bold" text-anchor="middle">5</text>
+<text x="108" y="1789" font-family="Noto Sans CJK SC" font-size="19" fill="#0f172a" font-weight="bold" text-anchor="start">投递策略：不是"改完就投"，而是一套节奏</text>
+<rect x="63" y="1821" width="424" height="118" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="60" y="1816" width="424" height="118" fill="#ffffff" rx="16" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="60" y="1816" width="424" height="8" fill="#10b981" rx="4"/>
+<text x="84" y="1852" font-family="Noto Sans CJK SC" font-size="14.5" fill="#0f172a" font-weight="bold" text-anchor="start">现在 · 用优化后简历</text>
+<text x="84" y="1880" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">投行政 / HR 支持类实习，</text>
+<text x="84" y="1902" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">主打活动统筹与档案数据两条证据</text>
+<rect x="511" y="1821" width="424" height="118" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="508" y="1816" width="424" height="118" fill="#ffffff" rx="16" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="508" y="1816" width="424" height="8" fill="#f59e0b" rx="4"/>
+<text x="532" y="1852" font-family="Noto Sans CJK SC" font-size="14.5" fill="#0f172a" font-weight="bold" text-anchor="start">同步 · 攒招聘数据</text>
+<text x="532" y="1880" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">借社团纳新跑通筛选 → 面试 → 复盘，</text>
+<text x="532" y="1902" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">所有数据留档进背景 JSON</text>
+<rect x="959" y="1821" width="424" height="118" fill="#0f172a" rx="16" fill-opacity="0.05"/>
+<rect x="956" y="1816" width="424" height="118" fill="#ffffff" rx="16" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="956" y="1816" width="424" height="8" fill="#6366f1" rx="4"/>
+<text x="980" y="1852" font-family="Noto Sans CJK SC" font-size="14.5" fill="#0f172a" font-weight="bold" text-anchor="start">4 周后 · 冲招聘方向</text>
+<text x="980" y="1880" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">重投招聘方向 HR 实习：简历新增纳新项目，</text>
+<text x="980" y="1902" font-family="Noto Sans CJK SC" font-size="12.5" fill="#475569" font-weight="normal" text-anchor="start">面试能讲一个完整闭环故事</text>
+<text x="60" y="1972" font-family="Noto Sans CJK SC" font-size="12" fill="#94a3b8" font-weight="normal" text-anchor="start">示意案例：人物与经历为虚构组合，分析逻辑与输出结构来自本工具真实 Prompt 链路（prompts/01-10） · 生成入口：index.html / docs/copy-paste-simple-prompt.md · 不编造经历 · 不承诺 offer</text>
+</svg>

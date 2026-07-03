@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareerFit Resume Demo · 一键生成简历优化 Prompt</title>
+<meta name="description" content="填写目标岗位 JD 和真实经历，在浏览器本地生成一份完整的简历优化 Prompt，复制去 ChatGPT / Claude / 豆包 / Kimi 使用。不上传、不保存任何数据。">
+<style>
+  :root {
+    --green: #1c8a5c;
+    --green-bg: #e2f4ea;
+    --blue: #2e5cc8;
+    --blue-bg: #e2e9fa;
+    --text: #1e1e1e;
+    --sub: #6e6e6e;
+    --border: #e1e1dc;
+    --bg: #f7f7f5;
+    --card: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { margin-bottom: 28px; }
+  h1 { font-size: 26px; margin: 0 0 8px; }
+  .sub { color: var(--sub); font-size: 15px; margin: 0; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 22px 22px 26px; margin-bottom: 20px;
+  }
+  .card h2 { font-size: 17px; margin: 0 0 14px; display: flex; align-items: center; gap: 8px; }
+  .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; border-radius: 50%; background: var(--text); color: #fff;
+    font-size: 13px; flex-shrink: 0;
+  }
+  label { display: block; font-size: 14px; font-weight: 600; margin: 16px 0 6px; }
+  label:first-of-type { margin-top: 0; }
+  .hint { font-size: 12px; color: var(--sub); font-weight: 400; margin-top: 2px; }
+  input[type=text], select, textarea {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px;
+    font-size: 14px; font-family: inherit; background: #fdfdfc; color: var(--text);
+  }
+  textarea { resize: vertical; min-height: 64px; }
+  textarea#jd { min-height: 140px; }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue); outline-offset: 1px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+  @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+  .required { color: #c0392b; font-weight: 700; }
+  .actions { margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  button {
+    font-family: inherit; font-size: 15px; font-weight: 600; border: none; border-radius: 10px;
+    padding: 12px 22px; cursor: pointer;
+  }
+  #generateBtn { background: var(--text); color: #fff; }
+  #generateBtn:hover { background: #000; }
+  #copyBtn { background: var(--green); color: #fff; display: none; }
+  #copyBtn:hover { background: #157048; }
+  #copyBtn.copied { background: #0f5c3a; }
+  .warn { color: #c0392b; font-size: 13px; margin-top: 8px; display: none; }
+  #outputCard { display: none; }
+  #outputText {
+    width: 100%; min-height: 340px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12.5px; white-space: pre-wrap; padding: 14px; border-radius: 10px;
+    border: 1px solid var(--border); background: #fbfbf9; color: #333;
+  }
+  .next-steps {
+    margin-top: 16px; padding: 14px 16px; background: var(--blue-bg); border-radius: 10px; font-size: 14px;
+  }
+  .next-steps b { color: var(--blue); }
+  .privacy {
+    margin-top: 16px; padding: 14px 16px; background: var(--green-bg); border-radius: 10px; font-size: 13px; color: #205c3f;
+  }
+  footer { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 13px; color: var(--sub); }
+  footer a { color: var(--blue); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  .principle-list { margin: 8px 0 0; padding-left: 18px; }
+  .principle-list li { margin-bottom: 4px; }
+  .refine-card { border-color: #e8dcc4; background: #fffdf7; }
+  .refine-card h2 { color: #8a5a1c; }
+  .issue-list {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; margin: 10px 0 4px;
+    list-style: none; padding: 0;
+  }
+  @media (max-width: 640px) { .issue-list { grid-template-columns: 1fr; } }
+  .issue-list li { font-size: 14px; }
+  .issue-list label { display: flex; align-items: flex-start; gap: 8px; font-weight: 400; margin: 0; cursor: pointer; }
+  .issue-list input[type=checkbox] { margin-top: 3px; flex-shrink: 0; }
+  #refineBtn { background: #8a5a1c; color: #fff; }
+  #refineBtn:hover { background: #6f4715; }
+  #refineCopyBtn { background: var(--green); color: #fff; display: none; }
+  #refineCopyBtn:hover { background: #157048; }
+  #refineCopyBtn.copied { background: #0f5c3a; }
+  #refineOutputCard { display: none; }
+  .draft-bar {
+    display: none; margin-bottom: 20px; padding: 10px 16px; background: #fff8e6;
+    border: 1px solid #eadfc0; border-radius: 10px; font-size: 13px; color: #7a5c14;
+  }
+  .draft-bar button {
+    font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;
+    background: transparent; border: 1px solid #cbb56a; color: #7a5c14; margin-left: 10px;
+  }
+  .draft-bar button:hover { background: #f3e7c3; }
+  #kwCard { display: none; }
+  .kw-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 4px; }
+  .kw-chip {
+    font-size: 12.5px; padding: 3px 10px; border-radius: 20px; border: 1px solid var(--border);
+  }
+  .kw-chip.hit { background: var(--green-bg); border-color: #bfe3cf; color: #17694a; }
+  .kw-chip.miss { background: #fdecea; border-color: #f3c4be; color: #a83a2c; }
+  .kw-note { font-size: 12.5px; color: var(--sub); margin-top: 10px; }
+  .btn-secondary {
+    background: #fff; color: var(--text); border: 1px solid var(--border);
+  }
+  .btn-secondary:hover { background: #f1f1ee; }
+  .step-tab { font-size: 13px; padding: 8px 14px; }
+  .step-tab.active { background: var(--text); color: #fff; border-color: var(--text); }
+  #appTable { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
+  #appTable th, #appTable td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; }
+  #appTable th { background: #f1f1ee; font-weight: 600; }
+  #appTable .del-app { color: #c0392b; cursor: pointer; background: none; border: none; font-size: 13px; padding: 0; }
+  .extra-card { border-color: #cdd8f0; background: #fbfcff; }
+  .extra-card h2 { color: var(--blue); }
+  #extraOutputWrap { display: none; }
+  #extraCopyBtn { background: var(--green); color: #fff; display: none; }
+  #extraCopyBtn:hover { background: #157048; }
+  #extraCopyBtn.copied { background: #0f5c3a; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>CareerFit Resume Demo</h1>
+    <p class="sub">填写目标岗位 JD 和真实经历，在你的浏览器里本地生成一份完整的简历优化 Prompt，复制去 ChatGPT / Claude / 豆包 / Kimi 使用。</p>
+    <div class="actions" style="margin-top:12px;">
+      <button id="sampleBtn" type="button" class="btn-secondary" style="font-size:13px; padding:8px 16px;">还没准备好 JD？填入示例数据试一试</button>
+    </div>
+  </header>
+
+  <div class="draft-bar" id="draftBar">
+    已自动恢复你上次填写的草稿（草稿只保存在你自己的浏览器里，不会上传）。
+    <button type="button" id="clearDraftBtn">清除草稿并重新填写</button>
+  </div>
+
+  <div class="card">
+    <h2><span class="step-num">1</span> 目标岗位方向（可选，用于跳转对应示例）</h2>
+    <select id="direction">
+      <option value="">不确定 / 不选</option>
+      <option value="AI/大模型产品实习">AI/大模型产品实习</option>
+      <option value="互联网产品/运营">互联网产品/运营</option>
+      <option value="数据分析">数据分析</option>
+      <option value="新媒体/内容运营">新媒体/内容运营</option>
+      <option value="电商运营">电商运营</option>
+      <option value="市场/品牌营销">市场/品牌营销</option>
+      <option value="金融/商业分析">金融/商业分析</option>
+      <option value="HR/行政/管培生">HR/行政/管培生</option>
+    </select>
+    <p class="hint" id="exampleLink" style="margin-top:8px;"></p>
+  </div>
+
+  <div class="card">
+    <h2><span class="step-num">2</span> 目标岗位 JD <span class="required">*</span></h2>
+    <textarea id="jd" placeholder="把你想投递的岗位 JD 完整粘贴进来，JD 越完整，输出越准确。"></textarea>
+  </div>
+
+  <div class="card">
+    <h2><span class="step-num">3</span> 你的真实背景（请按实际情况填写，没有的留空即可）</h2>
+    <div class="grid-2">
+      <div>
+        <label>学历/专业</label>
+        <input type="text" id="degree" placeholder="例如：本科商科专业">
+      </div>
+      <div>
+        <label>目标岗位</label>
+        <input type="text" id="targetRole" placeholder="例如：AI 产品实习">
+      </div>
+    </div>
+    <label>过往实习</label>
+    <textarea id="internship" placeholder="没有可以留空，不用写“暂无”，工具会自动处理。"></textarea>
+    <label>项目经历</label>
+    <textarea id="project" placeholder="课程项目、社团项目、个人项目都可以写。"></textarea>
+    <label>校园/社团经历</label>
+    <textarea id="campus"></textarea>
+    <label>内容/运营经历</label>
+    <textarea id="content" placeholder="例如公开内容平台、公众号、社群、活动策划等。"></textarea>
+    <div class="grid-2">
+      <div>
+        <label>会使用的工具</label>
+        <input type="text" id="tools" placeholder="例如：Excel、Canva、SQL">
+      </div>
+      <div>
+        <label>AI 工具使用经历</label>
+        <input type="text" id="aiTools" placeholder="例如：用 ChatGPT 整理资料">
+      </div>
+    </div>
+    <label>当前简历里想优化的内容</label>
+    <textarea id="resumeText" placeholder="粘贴你现在简历里想优化的那几行表达。"></textarea>
+
+    <div class="grid-2">
+      <div>
+        <label>生成方式</label>
+        <select id="genMode">
+          <option value="full">完整版：一次输出全部（推荐 ChatGPT / Claude 等）</option>
+          <option value="steps">分步版：3 段短 Prompt（推荐豆包 / Kimi 等免费版，成功率更高）</option>
+        </select>
+      </div>
+      <div>
+        <label>你打算用哪个 AI（可选，用于加强约束）</label>
+        <select id="targetAi">
+          <option value="">不确定 / 通用</option>
+          <option value="strong">ChatGPT / Claude / Gemini（能力较强）</option>
+          <option value="weak">豆包 / Kimi / 千问 / DeepSeek 免费版（自动加强格式约束）</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="generateBtn" type="button">生成 Prompt</button>
+      <button id="exportJsonBtn" type="button" class="btn-secondary">导出背景 JSON</button>
+      <button id="importJsonBtn" type="button" class="btn-secondary">导入背景 JSON</button>
+      <input type="file" id="importJsonFile" accept=".json,application/json" style="display:none">
+    </div>
+    <p class="hint" style="margin-top:8px;">导出 JSON 可以把填好的内容保存成文件，换电脑/换浏览器时导入即可恢复，相当于你的"主简历数据"。文件只在你本地，不会上传。</p>
+    <p class="warn" id="warnMsg">请先填写目标岗位 JD，再生成 Prompt。</p>
+  </div>
+
+  <div class="card" id="kwCard">
+    <h2><span class="step-num">✓</span> JD 关键词覆盖自查（本地粗略对照，不是 ATS 分数）</h2>
+    <p class="hint">下面是从 JD 里识别出的常见技能/工具关键词，绿色表示你填写的背景里出现过，红色表示没出现。红色不代表你不行——可能只是没写出来。生成的 Prompt 已附上这份清单，让 AI 重点判断你是"真的缺"还是"没写"。</p>
+    <label>你的背景里已覆盖</label>
+    <div id="kwHit"></div>
+    <label>JD 里出现、你的背景里没出现</label>
+    <div id="kwMiss"></div>
+    <p class="kw-note">识别方式：JD 中的英文工具词 + 常见中文技能词表的本地匹配，在你的浏览器里完成，不联网、不上传。识别不到的关键词不代表不重要，请以 AI 输出的"岗位要求提取"为准。</p>
+  </div>
+
+  <div class="card" id="outputCard">
+    <h2><span class="step-num">✓</span> 生成结果</h2>
+    <div class="actions" id="stepTabs" style="display:none; margin-top:0; margin-bottom:12px;">
+      <button type="button" class="btn-secondary step-tab" data-step="0">第 1 步：JD 解析 + 匹配</button>
+      <button type="button" class="btn-secondary step-tab" data-step="1">第 2 步：简历诊断 + 改写</button>
+      <button type="button" class="btn-secondary step-tab" data-step="2">第 3 步：求职建议</button>
+    </div>
+    <p class="hint" id="stepHint" style="display:none; margin-bottom:10px;">分步用法：把第 1 步发给 AI，等它输出完再发第 2 步、第 3 步（同一个对话里）。每段都短，免费版 AI 也不容易漏内容。</p>
+    <textarea id="outputText" readonly></textarea>
+    <div class="actions">
+      <button id="copyBtn" type="button">复制 Prompt</button>
+      <button id="downloadBtn" type="button" class="btn-secondary">下载为 .txt</button>
+    </div>
+    <div class="next-steps">
+      <b>下一步：</b>打开 ChatGPT / Claude / 豆包 / Kimi 中任意一个，新建对话，粘贴刚才复制的内容，等待 AI 输出 A 简历优化结果 + B 求职建议两部分。
+    </div>
+    <div class="privacy">
+      以上内容全部在你的浏览器本地生成，没有发送到任何服务器。为了防止误关页面丢失内容，表单草稿会自动保存在你自己浏览器的本地存储里（仅这台设备可见），可随时点顶部"清除草稿"删除。
+    </div>
+  </div>
+
+  <div class="card refine-card">
+    <h2><span class="step-num" style="background:#8a5a1c;">4</span> 对 AI 生成的结果不满意？在这里生成调整 Prompt</h2>
+    <p class="hint" style="margin-bottom:14px;">
+      不管你用的是豆包、千问、DeepSeek 还是 ChatGPT，只要把它生成的内容粘贴进来，勾选哪里不满意，这里会结合你上面填的 JD 和背景，生成一份带着具体修正要求的调整 Prompt，你再复制回去继续对话即可，不需要从头重新填一遍。
+    </p>
+
+    <label>把 AI 生成的、你不满意的内容粘贴在这里</label>
+    <textarea id="aiOutput" placeholder="可以是整段输出，也可以只贴你觉得有问题的那一部分（例如某几条简历表达、匹配度打分等）。"></textarea>
+
+    <div class="actions" style="margin-top:10px;">
+      <button id="lintBtn" type="button" class="btn-secondary">先本地质检一下 AI 输出</button>
+      <button id="crossBtn" type="button" class="btn-secondary">生成交叉复核 Prompt（换个 AI 审查它）</button>
+    </div>
+    <p class="hint">不同 AI 输出质量不稳定，质检器会在你的浏览器里做确定性检查：章节是否齐全、评分是否超上限/加总对不上、是否出现你没提供过的数字。发现的问题会自动帮你勾选下面对应的选项。</p>
+    <div id="lintResult" style="display:none; margin:10px 0 4px; padding:12px 16px; background:#f8fafc; border:1px solid var(--border); border-radius:10px; font-size:13px; line-height:1.8;"></div>
+
+    <label>具体哪里不满意（可多选）</label>
+    <ul class="issue-list" id="issueList">
+      <li><label><input type="checkbox" value="内容太笼统，缺具体细节，看不出实际做了什么"> 内容太笼统，缺具体细节</label></li>
+      <li><label><input type="checkbox" value="好像写了我没提供过的具体事实、机构名或数据，需要删除或标注为编造风险"> 好像编造了我没提供的经历/数据</label></li>
+      <li><label><input type="checkbox" value="求职建议和简历内容混在一起，分不清哪些可以直接写进简历"> 建议和简历内容没分开</label></li>
+      <li><label><input type="checkbox" value="岗位要求提取遗漏了 JD 原文里明确写出的重点"> 岗位要求提取漏了重点</label></li>
+      <li><label><input type="checkbox" value="把 JD 里没提到的内容当成了核心要求，或者把加分项当成了必备项"> 把不重要的内容当成了核心要求</label></li>
+      <li><label><input type="checkbox" value="匹配度打分感觉偏高或偏低，而且没有讲清楚具体依据"> 匹配度打分缺乏依据</label></li>
+      <li><label><input type="checkbox" value="下一步行动和补齐项目建议太空泛，不知道具体要做什么"> 求职建议太空泛，不好执行</label></li>
+      <li><label><input type="checkbox" value="没有说明关键建议的信息来源，我不知道哪些是有依据的、哪些是通用推断"> 没有说明信息来源</label></li>
+      <li><label><input type="checkbox" value="格式和结构比较混乱，不是清楚的 A / B 两部分加表格"> 格式/结构看不懂</label></li>
+    </ul>
+
+    <label>其他想说明的调整方向（选填）</label>
+    <textarea id="otherIssue" placeholder="例如：语气太生硬、想让某一部分更简短、想换一个角度分析等。"></textarea>
+
+    <div class="actions">
+      <button id="refineBtn" type="button">生成调整 Prompt</button>
+    </div>
+    <p class="warn" id="refineWarnMsg">请先粘贴 AI 生成的内容，并至少选一个不满意的地方或填写其他说明。</p>
+
+    <div id="refineOutputCard">
+      <label style="margin-top:20px;" id="refineOutputLabel">调整 Prompt（复制后回到原对话继续发送）</label>
+      <textarea id="refineOutputText" readonly></textarea>
+      <div class="actions">
+        <button id="refineCopyBtn" type="button">复制调整 Prompt</button>
+      </div>
+      <div class="next-steps">
+        <b>下一步：</b>回到你和 AI 的原对话（这样 AI 还记得之前的 JD 和背景），粘贴发送；如果是新开的对话，这份 Prompt 里也已经带上了完整的 JD 和背景，可以直接用。
+      </div>
+    </div>
+  </div>
+
+  <div class="card extra-card">
+    <h2><span class="step-num" style="background:var(--blue);">5</span> 进阶工具：打招呼语 / 面试预测（选用）</h2>
+    <p class="hint" style="margin-bottom:14px;">
+      简历优化完成后，这里可以基于上面已填写的 JD 和背景，再生成两种进阶 Prompt：投递平台打招呼语（Boss 直聘/实习僧风格）+ 求职信，或者面试问题预测。同样是本地拼装，复制去任意 AI 使用。
+    </p>
+    <div class="actions" style="margin-top:0;">
+      <button id="greetBtn" type="button" class="btn-secondary">生成打招呼语 / 求职信 Prompt</button>
+      <button id="interviewBtn" type="button" class="btn-secondary">生成面试问题预测 Prompt</button>
+      <button id="compareBtn" type="button" class="btn-secondary">生成多 JD 对比 Prompt</button>
+    </div>
+    <label style="margin-top:16px;">多 JD 对比：粘贴 1-2 个其他岗位的 JD（选填，用一行 --- 分隔多个）</label>
+    <textarea id="extraJds" placeholder="想对比『投哪个更划算』时使用：把第 2、第 3 个岗位的 JD 粘贴在这里，多个 JD 之间单独一行写 --- 分隔。第 1 个 JD 用上面第 2 步里填的。"></textarea>
+    <label style="margin-top:16px;">面试复盘：面完试回来，记录被问了什么、你答得怎么样（选填）</label>
+    <textarea id="interviewNotes" placeholder="例如：问了为什么转行、我答得很虚；问社群怎么运营的、答得还行；追问数据我说不上来……记流水账就行。"></textarea>
+    <div class="actions" style="margin-top:10px;">
+      <button id="reviewBtn" type="button" class="btn-secondary">生成面试复盘 Prompt</button>
+    </div>
+    <p class="warn" id="extraWarnMsg">请先在上面填写目标岗位 JD，再使用进阶工具。</p>
+    <p class="warn" id="compareWarnMsg">多 JD 对比至少需要 2 个 JD：请在上面第 2 步填一个，再在这里粘贴至少一个。</p>
+    <div id="extraOutputWrap">
+      <label style="margin-top:20px;" id="extraOutputLabel">进阶 Prompt</label>
+      <textarea id="extraOutputText" readonly style="min-height:260px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:12.5px;"></textarea>
+      <div class="actions">
+        <button id="extraCopyBtn" type="button">复制 Prompt</button>
+      </div>
+      <div class="next-steps" id="extraNextSteps"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="step-num" style="background:#1c8a5c;">6</span> 简历打印页：把优化后的简历变成可打印的 PDF（选用）</h2>
+    <p class="hint" style="margin-bottom:14px;">
+      AI 输出"保守版简历表达"后，把确认属实的内容粘贴到下面，点"生成打印预览"会打开一个干净的简历排版页面，用浏览器的"打印 → 存储为 PDF"即可导出。排版在本地完成，不上传任何内容。
+    </p>
+    <div class="grid-2">
+      <div>
+        <label>姓名</label>
+        <input type="text" id="printName" placeholder="例如：张三">
+      </div>
+      <div>
+        <label>联系方式一行（电话 / 邮箱 / 城市）</label>
+        <input type="text" id="printContact" placeholder="例如：138xxxx0000 · zhangsan@mail.com · 上海">
+      </div>
+    </div>
+    <label>简历内容（支持简单格式：## 开头是板块标题，- 开头是条目）</label>
+    <textarea id="printResume" style="min-height:180px;" placeholder="## 教育背景
+- xx 大学 · 新闻传播学 本科 · 2023-2027
+
+## 实习/项目经历
+- 担任学生社团组织部部长，负责纳新流程设计与活动协调，覆盖 100+ 候选成员
+- 独立运营公开内容账号，负责选题策划与发布节奏管理
+
+## 技能
+- Excel、Canva、ChatGPT 辅助办公"></textarea>
+    <div class="actions">
+      <button id="printBtn" type="button" class="btn-secondary">生成打印预览</button>
+    </div>
+    <p class="warn" id="printWarnMsg">请先粘贴简历内容。</p>
+    <p class="hint" style="margin-top:8px;">提醒：只粘贴你确认真实的"保守版"内容；"增强版"要等你真的完成对应项目后再用。</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="step-num" style="background:#6366f1;">7</span> 投递记录（本地看板，选用）</h2>
+    <p class="hint" style="margin-bottom:14px;">记录每次投递和进展，数据只存在你自己的浏览器里，可导出 CSV 用 Excel 打开。投了什么岗、用的哪版简历、走到哪一步，一目了然。</p>
+    <div class="grid-2">
+      <div>
+        <label>公司</label>
+        <input type="text" id="appCompany" placeholder="例如：某某科技">
+      </div>
+      <div>
+        <label>岗位</label>
+        <input type="text" id="appRole" placeholder="例如：内容运营实习生">
+      </div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <label>状态</label>
+        <select id="appStatus">
+          <option>已投递</option>
+          <option>已查看</option>
+          <option>约面试</option>
+          <option>面试完成</option>
+          <option>收到 offer</option>
+          <option>未通过</option>
+        </select>
+      </div>
+      <div>
+        <label>备注（选填）</label>
+        <input type="text" id="appNote" placeholder="例如：用了增强版第2条 / HR 已读未回">
+      </div>
+    </div>
+    <div class="actions">
+      <button id="addAppBtn" type="button" class="btn-secondary">添加记录</button>
+      <button id="exportCsvBtn" type="button" class="btn-secondary">导出 CSV</button>
+    </div>
+    <div id="appListWrap"></div>
+  </div>
+
+  <footer>
+    <p><b>这个工具的原则：</b></p>
+    <ul class="principle-list">
+      <li>不编造你没有提供过的经历，缺证据的地方会提示"建议补充"。</li>
+      <li>不承诺一定能拿 offer，只提供求职判断和简历改进参考。</li>
+      <li>把"可以放进简历的内容"和"求职建议"分开，不会把建议写成已完成的经历。</li>
+      <li>补齐项目只给候选方向，最终由你自己根据兴趣、时间和目标岗位决定。</li>
+    </ul>
+    <p style="margin-top:14px;">
+      这是 CareerFit Resume Demo 项目的网页表单版（v2），本质上和仓库里的
+      <code>docs/copy-paste-simple-prompt.md</code> 是同一份 Prompt，只是帮你自动填好空白处。
+      完整 Prompt 工具包、8 个行业 Demo、JD 测试集和失败案例记录见 <a href="README.md" target="_blank" rel="noopener">仓库 README</a>。
+    </p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var directionSelect = document.getElementById('direction');
+  var exampleLink = document.getElementById('exampleLink');
+  var targetRoleInput = document.getElementById('targetRole');
+
+  // ---- 草稿自动保存（仅保存在用户自己的浏览器 localStorage，不上传） ----
+  var DRAFT_KEY = 'careerfit-draft-v1';
+  var draftFields = ['direction', 'jd', 'degree', 'targetRole', 'internship', 'project', 'campus', 'content', 'tools', 'aiTools', 'resumeText', 'aiOutput', 'otherIssue', 'extraJds', 'printName', 'printContact', 'printResume', 'interviewNotes'];
+  var draftBar = document.getElementById('draftBar');
+  var clearDraftBtn = document.getElementById('clearDraftBtn');
+  var saveTimer = null;
+
+  function saveDraft() {
+    try {
+      var data = {};
+      draftFields.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) data[id] = el.value;
+      });
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
+    } catch (e) { /* 隐私模式等场景下静默失败，不影响使用 */ }
+  }
+
+  function restoreDraft() {
+    try {
+      var raw = localStorage.getItem(DRAFT_KEY);
+      if (!raw) return;
+      var data = JSON.parse(raw);
+      var hasContent = false;
+      draftFields.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el && data[id]) {
+          el.value = data[id];
+          hasContent = true;
+        }
+      });
+      if (hasContent) draftBar.style.display = 'block';
+    } catch (e) { /* 忽略损坏的草稿 */ }
+  }
+
+  draftFields.forEach(function (id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('input', function () {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveDraft, 400);
+    });
+    el.addEventListener('change', function () {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveDraft, 400);
+    });
+  });
+
+  clearDraftBtn.addEventListener('click', function () {
+    try { localStorage.removeItem(DRAFT_KEY); } catch (e) {}
+    draftFields.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+    draftBar.style.display = 'none';
+  });
+
+  restoreDraft();
+
+  // ---- JD 关键词覆盖自查（纯本地，粗略参考，不是 ATS 分数） ----
+  var CN_SKILL_DICT = [
+    '数据分析', '数据可视化', '数据看板', '报表', '用户画像', '埋点', 'A/B测试', '竞品分析', '用户研究', '需求分析', '需求文档', '原型', '产品文档',
+    '用户运营', '内容运营', '社群运营', '活动运营', '活动策划', '直播', '短视频', '私域', '投放', '增长', '转化', '复盘', '拉新', '留存', '涨粉',
+    '文案', '策划', '剪辑', '排版', '选题', '新媒体', '公众号', '小红书', '抖音', '视频号', '微博',
+    '电商', '选品', '供应链', '客服', '店铺', '直通车', '主播',
+    '品牌', '营销', '推广', '市场调研', '渠道', '公关',
+    '财务', '估值', '尽调', '研报', '财务模型', '行业研究',
+    '招聘', '培训', '绩效', '薪酬', '员工关系', '行政',
+    '大模型', '提示词', '智能体', '知识库', '标注', '测评', '机器学习', '算法',
+    '项目管理', '跨部门', '沟通', '协作', '统筹', '英语'
+  ];
+  var EN_STOPWORDS = ['the', 'and', 'to', 'of', 'for', 'with', 'in', 'on', 'at', 'a', 'an', 'or', 'is', 'are', 'be', 'as', 'by', 'we', 'you', 'your', 'our', 'will', 'can', 'etc', 'eg', 'ie', 'jd', 'hr', 'ok'];
+
+  function extractKeywords(jdText) {
+    var found = [];
+    var seen = {};
+    // 英文工具/技术词
+    var enMatches = jdText.match(/[A-Za-z][A-Za-z0-9+#\.\-]{1,14}/g) || [];
+    enMatches.forEach(function (w) {
+      var key = w.toLowerCase().replace(/[\.\-]+$/, '');
+      if (key.length < 2 || EN_STOPWORDS.indexOf(key) !== -1 || seen[key]) return;
+      seen[key] = true;
+      found.push(w.replace(/[\.\-]+$/, ''));
+    });
+    // 中文技能词表
+    CN_SKILL_DICT.forEach(function (w) {
+      if (jdText.indexOf(w) !== -1 && !seen[w]) {
+        seen[w] = true;
+        found.push(w);
+      }
+    });
+    return found.slice(0, 30);
+  }
+
+  function analyzeCoverage(jdText, bgText) {
+    var keywords = extractKeywords(jdText);
+    var bgLower = bgText.toLowerCase();
+    var hit = [], miss = [];
+    keywords.forEach(function (kw) {
+      if (bgLower.indexOf(kw.toLowerCase()) !== -1) hit.push(kw);
+      else miss.push(kw);
+    });
+    return { hit: hit, miss: miss };
+  }
+
+  function renderChips(container, list, cls, emptyText) {
+    if (list.length === 0) {
+      container.innerHTML = '<p class="hint">' + emptyText + '</p>';
+      return;
+    }
+    var html = '<div class="kw-chips">';
+    list.forEach(function (kw) {
+      html += '<span class="kw-chip ' + cls + '">' + kw.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</span>';
+    });
+    html += '</div>';
+    container.innerHTML = html;
+  }
+
+  var directionFileMap = {
+    'AI/大模型产品实习': 'examples/ai-product-intern.md',
+    '互联网产品/运营': 'examples/internet-product-ops.md',
+    '数据分析': 'examples/data-analyst.md',
+    '新媒体/内容运营': 'examples/content-ops.md',
+    '电商运营': 'examples/ecommerce-ops.md',
+    '市场/品牌营销': 'examples/marketing-branding.md',
+    '金融/商业分析': 'examples/business-analysis.md',
+    'HR/行政/管培生': 'examples/hr-management-trainee.md'
+  };
+
+  directionSelect.addEventListener('change', function () {
+    var val = directionSelect.value;
+    if (val && directionFileMap[val]) {
+      exampleLink.innerHTML = '可以先参考对应示例：<a href="' + directionFileMap[val] + '" target="_blank" rel="noopener">' + directionFileMap[val] + '</a>';
+      if (!targetRoleInput.value) targetRoleInput.value = val;
+    } else {
+      exampleLink.innerHTML = '';
+    }
+  });
+
+  function buildPrompt(fields) {
+    return [
+      '你是一名严谨的求职简历优化顾问。',
+      '',
+      '你的任务是：根据我提供的目标岗位 JD 和个人真实经历，先挖掘我的履历事项并生成优化后的简历表达，再单独给出基于 JD 的求职建议。',
+      '',
+      '重要原则：',
+      '1. 不允许编造我没有提供过的经历。',
+      '2. 如果缺少数据或证据，请写"建议补充"，不要虚构数字。',
+      '3. 不要承诺我一定能拿 offer，只提供求职分析和改进建议。',
+      '4. 简历优化要适合中文简历，表达要专业、简洁、可被 HR 看懂。',
+      '5. 如果我的经历和岗位不匹配，请诚实指出，并推荐更适合的相邻岗位。',
+      '6. 请把"可以放进简历的内容"和"后续建议"分开，不要把建议写成我已经完成的经历。',
+      '7. 补齐项目只提供候选方向，最终由我根据兴趣、时间和目标岗位决定。',
+      '8. 求职建议必须标明信息来源，区分 JD 原文、我的个人经历、优化后简历和通用求职判断。',
+      '',
+      '请根据以下信息分析：',
+      '',
+      '【目标岗位 JD】',
+      '<<<',
+      fields.jd,
+      '>>>',
+      '',
+      '【我的个人背景】',
+      '- 学历/专业：' + fields.degree,
+      '- 目标岗位：' + fields.targetRole,
+      '- 过往实习：' + fields.internship,
+      '- 项目经历：' + fields.project,
+      '- 校园/社团经历：' + fields.campus,
+      '- 内容/运营经历：' + fields.content,
+      '- 会使用的工具：' + fields.tools,
+      '- AI 工具使用经历：' + fields.aiTools,
+      '- 当前简历里想优化的内容：' + fields.resumeText,
+      '',
+      '请按以下结构输出，必须分成 A、B 两大部分：',
+      '',
+      '# A. 简历优化结果',
+      '',
+      '## 1. 岗位要求提取',
+      '',
+      '请用表格提取：',
+      '- 核心职责',
+      '- 必备技能',
+      '- 加分技能',
+      '- 软技能',
+      '- 简历关键词',
+      '',
+      '## 2. 我的履历事项挖掘',
+      '',
+      '请从我的个人经历中挖掘可以用于简历的事项，并分成：',
+      '',
+      '| 履历事项 | 可体现能力 | 对应 JD 要求 | 是否可直接写进简历 | 需要补充的证据 |',
+      '| --- | --- | --- | --- | --- |',
+      '',
+      '要求：',
+      '- 只基于我提供过的经历。',
+      '- 不要创造我没有做过的项目。',
+      '- 如果经历很弱，请说明可以从什么角度表达。',
+      '',
+      '## 3. 我的匹配度判断',
+      '',
+      '请给出 0-100 分匹配度，并解释每一项分数：',
+      '',
+      '| 维度 | 分数 | 依据 | 需要补齐 |',
+      '| --- | --- | --- | --- |',
+      '| 岗位核心技能 | /40 |  |  |',
+      '| 经历相关度 | /25 |  |  |',
+      '| 工具/AI/数据能力 | /15 |  |  |',
+      '| 表达与协作能力 | /10 |  |  |',
+      '| 学习潜力 | /10 |  |  |',
+      '',
+      '评分锚点（必须遵守，防止分数虚高或虚低）：',
+      '- 该维度几乎没有证据：不超过该维度满分的 40%。',
+      '- 有可迁移的间接证据、但没有直接对口经历：40%-70%。',
+      '- 有直接对口的经历或作品证据：70% 以上。',
+      '- 每个维度的分数必须引用至少一条我的具体经历或 JD 原文作为依据，没有依据不允许给分。',
+      '- 五个维度分数之和必须等于总分，总分不超过 100。',
+      '',
+      '## 4. 简历问题诊断',
+      '',
+      '请指出我当前表达的问题，例如：',
+      '- 太泛',
+      '- 没有结果',
+      '- 缺少岗位关键词',
+      '- 和 JD 关联不清',
+      '- 数据缺失',
+      '- 容易被面试追问',
+      '',
+      '## 5. 简历优化版本',
+      '',
+      '请输出两版：',
+      '',
+      '### 保守版',
+      '可以直接放进简历，不夸大，不编造。',
+      '',
+      '### 增强版',
+      '需要我补充证据或完成项目后再写。',
+      '',
+      '## 6. 真实性检查',
+      '',
+      '请列出优化后简历中哪些内容可以直接使用，哪些内容需要我补充证据后才能使用。',
+      '',
+      '# B. 求职建议',
+      '',
+      '注意：以下内容是建议，不要直接写进简历，除非我真的完成了对应动作。',
+      '',
+      '## 7. JD 匹配建议',
+      '',
+      '请告诉我：',
+      '- 是否建议投递',
+      '- 更适合的相邻岗位',
+      '- 当前最大短板',
+      '- 最优先补齐的能力',
+      '',
+      '## 8. 可补齐项目建议',
+      '',
+      '请提供 1-3 个候选项目方向，默认周期为 1-3 个月，可以根据我的时间和基础调整。不要替我直接决定必须做哪个项目，请给出推荐排序和选择依据。',
+      '',
+      '每个项目请说明：',
+      '- 项目目标',
+      '- 预计周期',
+      '- 适合选择这个项目的情况',
+      '- 不适合选择这个项目的情况',
+      '- 具体步骤',
+      '- 交付物',
+      '- 完成前不能写进简历的内容',
+      '- 完成后简历可以怎么写',
+      '',
+      '## 9. 下一步行动清单',
+      '',
+      '请给出 5 个最优先行动，每个行动都要有交付物：',
+      '',
+      '| 优先级 | 行动 | 目的 | 交付物 |',
+      '| --- | --- | --- | --- |',
+      '',
+      '## 10. 面试风险提醒',
+      '',
+      '请列出面试官可能追问的问题，以及我应该准备什么证据。',
+      '',
+      '## 11. 信息来源与判断依据',
+      '',
+      '请用表格列出关键建议来自哪里：',
+      '',
+      '| 建议 | 信息来源 | 具体依据 | 可信度 | 我需要核实什么 |',
+      '| --- | --- | --- | --- | --- |',
+      '',
+      '信息来源只能包括：',
+      '- 目标岗位 JD 原文',
+      '- 我提供的真实经历',
+      '- 优化后简历表达',
+      '- 通用求职常识或面试经验推断',
+      '',
+      '如果涉及公司近况、行业趋势、薪资、招聘数量、岗位是否仍开放等最新信息，请明确写"需要补充公开信息或最新 JD 链接后再判断"。',
+      '',
+      '【输出前自检清单（必须逐项确认后再结束回答）】',
+      '1. 是否包含 A、B 两大部分和全部编号章节（1-11），没有省略任何一节。',
+      '2. 匹配度评分：每个维度是否都没超过上限（40/25/15/10/10），五项之和是否等于总分。',
+      '3. 是否出现了我没有提供过的具体数字、机构名或项目名；如有，是否已改为"建议补充"或删除。',
+      '4. B 部分的建议是否都没有被写成 A 部分的简历内容。',
+      '5. 信息来源表是否覆盖了所有关键建议。',
+      '如果任何一项不满足，请先修正再输出最终结果。'
+    ].join('\n');
+  }
+
+  function aiConstraints() {
+    var v = document.getElementById('targetAi').value;
+    if (v !== 'weak') return '';
+    return [
+      '',
+      '【针对当前 AI 的额外格式要求（必须遵守）】',
+      '1. 严格按编号章节输出，不允许省略、合并或跳过任何章节。',
+      '2. 能用表格的地方必须用表格。',
+      '3. 如果一条消息写不完，请在结尾写"（未完待续）"并在下一条消息继续，直到全部输出完成，不要中途停止或擅自缩短。',
+      '4. 开头和结尾不要添加与任务无关的客套话或总结。'
+    ].join('\n');
+  }
+
+  function stepBackgroundBlock(fields) {
+    return [
+      '【目标岗位 JD】',
+      '<<<',
+      fields.jd,
+      '>>>',
+      '',
+      '【我的个人背景】',
+      '- 学历/专业：' + fields.degree,
+      '- 目标岗位：' + fields.targetRole,
+      '- 过往实习：' + fields.internship,
+      '- 项目经历：' + fields.project,
+      '- 校园/社团经历：' + fields.campus,
+      '- 内容/运营经历：' + fields.content,
+      '- 会使用的工具：' + fields.tools,
+      '- AI 工具使用经历：' + fields.aiTools,
+      '- 当前简历里想优化的内容：' + fields.resumeText
+    ].join('\n');
+  }
+
+  function buildStepPrompts(fields, covAppendix) {
+    var principles = [
+      '重要原则（整个对话期间持续有效）：',
+      '1. 不允许编造我没有提供过的经历；缺少数据写"建议补充"，不虚构数字。',
+      '2. 不承诺我一定能拿 offer。',
+      '3. "可以放进简历的内容"和"求职建议"必须分开。',
+      '4. 关键建议要标注信息来源（JD 原文 / 我的经历 / 优化后简历 / 通用求职判断）。'
+    ].join('\n');
+    var p1 = [
+      '你是一名严谨的求职简历优化顾问。我们分三步完成简历优化，这是第 1 步。',
+      '',
+      principles,
+      '',
+      stepBackgroundBlock(fields),
+      '',
+      '第 1 步请只输出以下三节：',
+      '',
+      '## 1. 岗位要求提取',
+      '用表格提取：核心职责、必备技能、加分技能、软技能、简历关键词。',
+      '',
+      '## 2. 我的履历事项挖掘',
+      '| 履历事项 | 可体现能力 | 对应 JD 要求 | 是否可直接写进简历 | 需要补充的证据 |',
+      '只基于我提供过的经历，不要创造项目。',
+      '',
+      '## 3. 我的匹配度判断',
+      '| 维度 | 分数 | 依据 | 需要补齐 |（岗位核心技能/40、经历相关度/25、工具与AI能力/15、表达协作/10、学习潜力/10）',
+      '评分锚点：该维度几乎无证据不超过满分 40%；只有可迁移间接证据 40%-70%；有直接对口证据 70% 以上。每个分数必须引用具体经历或 JD 原文，五项之和等于总分。',
+      covAppendix,
+      '',
+      '输出完这三节后请停下，等我发第 2 步指令，不要自行继续。'
+    ].join('\n');
+    var p2 = [
+      '第 2 步。基于上面我提供的 JD、个人背景和你刚完成的分析，继续输出以下三节（原则不变：不编造经历，缺数据写"建议补充"）：',
+      '',
+      '## 4. 简历问题诊断',
+      '指出我当前表达的问题：太泛、没有结果、缺关键词、和 JD 关联不清、数据缺失、容易被面试追问。',
+      '',
+      '## 5. 简历优化版本',
+      '### 保守版（可直接放进简历，不夸大不编造）',
+      '### 增强版（需要我补充证据或完成项目后再写）',
+      '',
+      '## 6. 真实性检查',
+      '列出优化后内容中哪些可直接使用、哪些需要补证据后才能使用。',
+      '',
+      '输出完请停下，等我发第 3 步指令。',
+      '（如果这是新对话而不是接着第 1 步，请先让我重新提供 JD 和背景，不要凭空作答。）'
+    ].join('\n');
+    var p3 = [
+      '第 3 步。现在输出求职建议部分。注意：以下都是建议，不要写成我已完成的经历，也不要混入前面的简历内容。',
+      '',
+      '## 7. JD 匹配建议',
+      '是否建议投递、更适合的相邻岗位、当前最大短板、最优先补齐的能力。',
+      '',
+      '## 8. 可补齐项目建议',
+      '1-3 个候选项目方向（默认 1-3 个月），每个说明：目标、周期、适合/不适合的情况、步骤、交付物、完成前不能写进简历的内容、完成后可以怎么写。不要替我决定，只给推荐排序和依据。',
+      '',
+      '## 9. 下一步行动清单',
+      '| 优先级 | 行动 | 目的 | 交付物 |（5 个最优先行动）',
+      '',
+      '## 10. 面试风险提醒',
+      '面试官可能追问的问题和我需要准备的证据。',
+      '',
+      '## 11. 信息来源与判断依据',
+      '| 建议 | 信息来源 | 具体依据 | 可信度 | 我需要核实什么 |',
+      '来源只能是：JD 原文 / 我的真实经历 / 优化后简历 / 通用求职判断。涉及公司近况、薪资等最新信息请写"需要补充公开信息后再判断"。'
+    ].join('\n');
+    var extra = aiConstraints();
+    if (extra) { p1 += '\n' + extra; p2 += '\n' + extra; p3 += '\n' + extra; }
+    return [p1, p2, p3];
+  }
+
+  function coverageAppendix(coverage) {
+    if (!coverage || coverage.miss.length === 0) return '';
+    return [
+      '',
+      '【关键词覆盖参考（由本地工具粗略对照生成，仅供你判断时参考）】',
+      '以下 JD 关键词在我填写的背景描述中没有出现：' + coverage.miss.join('、') + '。',
+      '请在"岗位要求提取"和"匹配度判断"时重点区分：哪些是我真的缺少的能力，哪些可能只是我没写出来。对于可能只是没写出来的，请在建议里提醒我补充说明，而不是直接判定为短板。'
+    ].join('\n');
+  }
+
+  function val(id) {
+    var v = document.getElementById(id).value.trim();
+    return v === '' ? '（未提供）' : v;
+  }
+
+  var generateBtn = document.getElementById('generateBtn');
+  var warnMsg = document.getElementById('warnMsg');
+  var outputCard = document.getElementById('outputCard');
+  var outputText = document.getElementById('outputText');
+  var copyBtn = document.getElementById('copyBtn');
+
+  generateBtn.addEventListener('click', function () {
+    var jdVal = document.getElementById('jd').value.trim();
+    if (!jdVal) {
+      warnMsg.style.display = 'block';
+      document.getElementById('jd').focus();
+      return;
+    }
+    warnMsg.style.display = 'none';
+
+    var fields = {
+      jd: jdVal,
+      degree: val('degree'),
+      targetRole: val('targetRole'),
+      internship: val('internship'),
+      project: val('project'),
+      campus: val('campus'),
+      content: val('content'),
+      tools: val('tools'),
+      aiTools: val('aiTools'),
+      resumeText: val('resumeText')
+    };
+
+    // 本地关键词覆盖自查
+    var bgText = ['degree', 'targetRole', 'internship', 'project', 'campus', 'content', 'tools', 'aiTools', 'resumeText']
+      .map(function (id) { return document.getElementById(id).value; }).join('\n');
+    var coverage = analyzeCoverage(jdVal, bgText);
+    var kwCard = document.getElementById('kwCard');
+    renderChips(document.getElementById('kwHit'), coverage.hit, 'hit', '（背景描述里暂时没有匹配到 JD 关键词）');
+    renderChips(document.getElementById('kwMiss'), coverage.miss, 'miss', '（很好，识别到的 JD 关键词你的背景里都出现了）');
+    kwCard.style.display = 'block';
+
+    var stepTabs = document.getElementById('stepTabs');
+    var stepHint = document.getElementById('stepHint');
+    if (document.getElementById('genMode').value === 'steps') {
+      stepPrompts = buildStepPrompts(fields, coverageAppendix(coverage));
+      stepTabs.style.display = 'flex';
+      stepHint.style.display = 'block';
+      showStep(0);
+    } else {
+      stepPrompts = null;
+      stepTabs.style.display = 'none';
+      stepHint.style.display = 'none';
+      outputText.value = buildPrompt(fields) + coverageAppendix(coverage) + aiConstraints();
+    }
+    outputCard.style.display = 'block';
+    copyBtn.style.display = 'inline-block';
+    copyBtn.classList.remove('copied');
+    copyBtn.textContent = '复制 Prompt';
+    kwCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // ---- 分步模式 Tab 切换 ----
+  var stepPrompts = null;
+  var stepTabBtns = document.querySelectorAll('.step-tab');
+  function showStep(i) {
+    if (!stepPrompts) return;
+    outputText.value = stepPrompts[i];
+    stepTabBtns.forEach(function (b) {
+      b.classList.toggle('active', parseInt(b.getAttribute('data-step'), 10) === i);
+    });
+    copyBtn.textContent = '复制第 ' + (i + 1) + ' 步 Prompt';
+  }
+  stepTabBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      showStep(parseInt(b.getAttribute('data-step'), 10));
+    });
+  });
+
+  // ---- 下载 Prompt 为 .txt ----
+  document.getElementById('downloadBtn').addEventListener('click', function () {
+    var blob = new Blob([outputText.value], { type: 'text/plain;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'careerfit-prompt.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+  });
+
+  function wireCopyButton(btn, sourceTextarea, defaultLabel) {
+    btn.addEventListener('click', function () {
+      var text = sourceTextarea.value;
+      function done() {
+        btn.textContent = '已复制 ✓';
+        btn.classList.add('copied');
+        setTimeout(function () {
+          btn.textContent = defaultLabel;
+          btn.classList.remove('copied');
+        }, 2000);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function () {
+          sourceTextarea.select();
+          document.execCommand('copy');
+          done();
+        });
+      } else {
+        sourceTextarea.select();
+        document.execCommand('copy');
+        done();
+      }
+    });
+  }
+
+  wireCopyButton(copyBtn, outputText, '复制 Prompt');
+
+  // ---- Step 4: 反馈调整 Prompt ----
+  function buildRefinePrompt(fields, aiOutput, issues, otherIssue) {
+    var lines = [
+      '我之前根据下面这份 JD 和个人背景，让 AI 帮我做简历优化和求职建议，但对上一次的输出不满意，需要你在同一份背景下重新调整。',
+      '',
+      '【目标岗位 JD】',
+      '<<<',
+      fields.jd,
+      '>>>',
+      '',
+      '【我的个人背景】',
+      '- 学历/专业：' + fields.degree,
+      '- 目标岗位：' + fields.targetRole,
+      '- 过往实习：' + fields.internship,
+      '- 项目经历：' + fields.project,
+      '- 校园/社团经历：' + fields.campus,
+      '- 内容/运营经历：' + fields.content,
+      '- 会使用的工具：' + fields.tools,
+      '- AI 工具使用经历：' + fields.aiTools,
+      '- 当前简历里想优化的内容：' + fields.resumeText,
+      '',
+      '【AI 上一次生成的内容，我不满意】',
+      '<<<',
+      aiOutput,
+      '>>>',
+      '',
+      '【这次需要你重点修正的问题】'
+    ];
+
+    issues.forEach(function (issue) {
+      lines.push('- ' + issue);
+    });
+    if (otherIssue) {
+      lines.push('- 其他要求：' + otherIssue);
+    }
+
+    lines = lines.concat([
+      '',
+      '【调整要求】',
+      '1. 请针对上面指出的问题重新生成，不要改动没有被指出问题的部分。',
+      '2. 修正后仍然要遵守最初的规则：不允许编造我没有提供过的经历；缺证据的地方写"建议补充"，不要虚构数字；不承诺我一定能拿 offer；简历内容和求职建议要分开，不要把建议写成我已经完成的经历；补齐项目只提供候选方向，由我自己决定；每条关键求职建议都要标注信息来源（JD 原文 / 我的经历 / 优化后简历 / 通用求职判断）。',
+      '3. 请仍然按照 A. 简历优化结果 / B. 求职建议 的结构重新输出被修正的部分，能用表格的地方继续用表格。',
+      '4. 如果我指出的问题里有互相矛盾的地方，请指出矛盾并让我确认，不要自己猜测处理。'
+    ]);
+
+    return lines.join('\n');
+  }
+
+  var refineBtn = document.getElementById('refineBtn');
+  var refineWarnMsg = document.getElementById('refineWarnMsg');
+  var refineOutputCard = document.getElementById('refineOutputCard');
+  var refineOutputText = document.getElementById('refineOutputText');
+  var refineCopyBtn = document.getElementById('refineCopyBtn');
+  var issueCheckboxes = document.querySelectorAll('#issueList input[type=checkbox]');
+
+  wireCopyButton(refineCopyBtn, refineOutputText, '复制调整 Prompt');
+
+  refineBtn.addEventListener('click', function () {
+    var aiOutputVal = document.getElementById('aiOutput').value.trim();
+    var otherIssueVal = document.getElementById('otherIssue').value.trim();
+    var checkedIssues = [];
+    issueCheckboxes.forEach(function (cb) {
+      if (cb.checked) checkedIssues.push(cb.value);
+    });
+
+    if (!aiOutputVal || (checkedIssues.length === 0 && !otherIssueVal)) {
+      refineWarnMsg.style.display = 'block';
+      return;
+    }
+    refineWarnMsg.style.display = 'none';
+
+    var fields = {
+      jd: val('jd') === '（未提供）' ? '（我没有在网页里重新粘贴 JD，请沿用我们对话里前面提到的目标岗位 JD）' : document.getElementById('jd').value.trim(),
+      degree: val('degree'),
+      targetRole: val('targetRole'),
+      internship: val('internship'),
+      project: val('project'),
+      campus: val('campus'),
+      content: val('content'),
+      tools: val('tools'),
+      aiTools: val('aiTools'),
+      resumeText: val('resumeText')
+    };
+
+    refineOutputText.value = buildRefinePrompt(fields, aiOutputVal, checkedIssues, otherIssueVal);
+    document.getElementById('refineOutputLabel').textContent = '调整 Prompt（复制后回到原对话继续发送）';
+    refineOutputCard.style.display = 'block';
+    refineCopyBtn.style.display = 'inline-block';
+    refineCopyBtn.classList.remove('copied');
+    refineCopyBtn.textContent = '复制调整 Prompt';
+    refineOutputCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  // ---- Step 5: 进阶工具（打招呼语/求职信、面试预测） ----
+  function collectFields() {
+    return {
+      jd: document.getElementById('jd').value.trim(),
+      degree: val('degree'),
+      targetRole: val('targetRole'),
+      internship: val('internship'),
+      project: val('project'),
+      campus: val('campus'),
+      content: val('content'),
+      tools: val('tools'),
+      aiTools: val('aiTools'),
+      resumeText: val('resumeText')
+    };
+  }
+
+  function backgroundBlock(fields) {
+    return [
+      '【我的个人背景】',
+      '- 学历/专业：' + fields.degree,
+      '- 目标岗位：' + fields.targetRole,
+      '- 过往实习：' + fields.internship,
+      '- 项目经历：' + fields.project,
+      '- 校园/社团经历：' + fields.campus,
+      '- 内容/运营经历：' + fields.content,
+      '- 会使用的工具：' + fields.tools,
+      '- AI 工具使用经历：' + fields.aiTools
+    ].join('\n');
+  }
+
+  function buildGreetingPrompt(fields) {
+    return [
+      '你是一名熟悉国内求职平台（Boss 直聘、实习僧、牛客）和邮件投递习惯的求职沟通顾问。',
+      '',
+      '请根据下面的目标岗位 JD 和我的真实背景，帮我生成求职沟通材料。',
+      '',
+      '重要原则：',
+      '1. 只能使用我真实提供过的经历，不允许编造实习、项目、数据或荣誉。',
+      '2. 每个版本后面用一行标注"引用经历：xxx"，说明用到了我背景里的哪条信息。',
+      '3. 不写夸张承诺（如"我一定能带来 xx 增长"），只陈述可验证的事实和意愿。',
+      '4. 如果我的背景和岗位差距明显，请直接说明，并建议我优先补齐什么，而不是用话术掩盖。',
+      '',
+      '【目标岗位 JD】',
+      '<<<',
+      fields.jd,
+      '>>>',
+      '',
+      backgroundBlock(fields),
+      '',
+      '请输出：',
+      '',
+      '## 1. 平台打招呼语（Boss 直聘 / 实习僧风格）',
+      '',
+      '生成 3 个版本，每个 30-80 字：',
+      '- 版本 A（稳重版）：学历/专业 + 最相关经历 + 求查看简历',
+      '- 版本 B（亮点前置版）：用最强的一条匹配经历开头',
+      '- 版本 C（简短直接版）：一句话说清"我是谁 + 为什么匹配"',
+      '',
+      '每个版本标注：引用经历、适合什么情况用。',
+      '',
+      '## 2. 邮件求职信 / 自我介绍段落',
+      '',
+      '生成 2 个版本，每个 150-300 字：',
+      '- 版本 A（标准版）：开头点明应聘岗位 -> 2 个匹配点及证据 -> 表达意愿和可到岗时间占位',
+      '- 版本 B（针对性版）：围绕 JD 里最核心的一条要求展开',
+      '',
+      '每个版本标注：引用经历、需要我自己补充的信息（用【】标出，例如【可实习时长】）。',
+      '',
+      '## 3. 真实性检查',
+      '',
+      '列出以上版本中所有引用的经历事实，让我逐条确认是否属实。如果某条是从我的描述推断而来（不是我明确写过的），请标注"推断，请确认"。'
+    ].join('\n');
+  }
+
+  function buildInterviewPrompt(fields) {
+    return [
+      '你是一名有校招和实习面试经验的面试官。',
+      '',
+      '请根据下面的 JD 和我的背景/简历表达，预测面试中最可能被问到的问题，并帮我准备。',
+      '',
+      '重要原则：',
+      '1. 每个问题都要标注推导来源：JD 的哪条要求，或我背景里的哪句表达。',
+      '2. 优先覆盖我背景里"说得比较满、但证据可能不足"的表达，这是最容易被追问的。',
+      '3. 不要提供让我背诵的标准答案，只提供回答框架和我应该从自己经历里准备什么素材。',
+      '4. 不要声称这是某公司的真实面试题，这只是基于 JD 的合理推测。',
+      '',
+      '【目标岗位 JD】',
+      '<<<',
+      fields.jd,
+      '>>>',
+      '',
+      backgroundBlock(fields),
+      '- 当前简历里想优化的内容：' + fields.resumeText,
+      '',
+      '请输出：',
+      '',
+      '## 1. 高概率问题清单（8-12 个）',
+      '',
+      '| 问题 | 推导来源 | 考察点 | 风险等级（高/中/低） |',
+      '| --- | --- | --- | --- |',
+      '',
+      '风险等级 = 我现有证据不足、容易答砸的程度。',
+      '',
+      '## 2. 每个高风险问题的准备建议',
+      '',
+      '对风险等级为"高"的问题，逐个说明：',
+      '- 面试官想听到什么',
+      '- 我可以从哪段经历里找素材（只能用我提供过的经历）',
+      '- 建议的回答结构（STAR：情境-任务-行动-结果）',
+      '- 绝对不要说的内容（例如把没做过的说成做过）',
+      '',
+      '## 3. 反问环节建议',
+      '',
+      '给出 3 个适合我这个背景问面试官的问题，并说明每个问题想达到什么目的。',
+      '',
+      '输出完成后请告诉我：如果我想继续进行模拟面试，可以直接对你说"开始模拟面试"，届时请你扮演面试官，一次只问一个问题，共 6-8 题，等我说"面试结束"后再统一点评（点评时区分内容问题和表达问题，并指出疑似夸大、可能被追问的回答）。'
+    ].join('\n');
+  }
+
+  var greetBtn = document.getElementById('greetBtn');
+  var interviewBtn = document.getElementById('interviewBtn');
+  var extraWarnMsg = document.getElementById('extraWarnMsg');
+  var extraOutputWrap = document.getElementById('extraOutputWrap');
+  var extraOutputText = document.getElementById('extraOutputText');
+  var extraOutputLabel = document.getElementById('extraOutputLabel');
+  var extraNextSteps = document.getElementById('extraNextSteps');
+  var extraCopyBtn = document.getElementById('extraCopyBtn');
+
+  wireCopyButton(extraCopyBtn, extraOutputText, '复制 Prompt');
+
+  function handleExtra(kind) {
+    var fields = collectFields();
+    if (!fields.jd) {
+      extraWarnMsg.style.display = 'block';
+      return;
+    }
+    extraWarnMsg.style.display = 'none';
+    if (kind === 'greeting') {
+      extraOutputText.value = buildGreetingPrompt(fields);
+      extraOutputLabel.textContent = '打招呼语 / 求职信 Prompt（复制去任意 AI 使用）';
+      extraNextSteps.innerHTML = '<b>下一步：</b>粘贴到 ChatGPT / Claude / 豆包 / Kimi，AI 会生成 3 个打招呼语版本 + 2 个求职信版本，并附真实性检查。挑一个顺手改改再用，别直接群发同一句。';
+    } else {
+      extraOutputText.value = buildInterviewPrompt(fields);
+      extraOutputLabel.textContent = '面试问题预测 Prompt（复制去任意 AI 使用）';
+      extraNextSteps.innerHTML = '<b>下一步：</b>粘贴给 AI 拿到问题清单后，想练习就接着对它说"开始模拟面试"，AI 会一次一题地扮演面试官，说"面试结束"后统一点评。';
+    }
+    extraOutputWrap.style.display = 'block';
+    extraCopyBtn.style.display = 'inline-block';
+    extraCopyBtn.classList.remove('copied');
+    extraCopyBtn.textContent = '复制 Prompt';
+    extraOutputWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  greetBtn.addEventListener('click', function () { handleExtra('greeting'); });
+  interviewBtn.addEventListener('click', function () { handleExtra('interview'); });
+
+  // ---- 面试复盘 Prompt ----
+  document.getElementById('reviewBtn').addEventListener('click', function () {
+    var notes = document.getElementById('interviewNotes').value.trim();
+    var fields = collectFields();
+    if (!notes) {
+      extraWarnMsg.textContent = '请先在上面的"面试复盘"输入框里记录这次面试的问题和你的回答情况。';
+      extraWarnMsg.style.display = 'block';
+      return;
+    }
+    extraWarnMsg.style.display = 'none';
+    extraOutputText.value = [
+      '你是一名诚实的面试复盘教练。我刚面完一场面试，下面是我的记录，请帮我复盘。不要安慰式点评，直接指出问题；但也不要否定一切，指出哪些回答是可以保留的。',
+      '',
+      fields.jd ? '【这次面试的岗位 JD】\n<<<\n' + fields.jd + '\n>>>' : '【岗位 JD】（未提供，请基于我的记录推断岗位方向，并标注"建议补充 JD 后更准确"）',
+      '',
+      '【我的背景摘要】',
+      '- 学历/专业：' + fields.degree,
+      '- 目标岗位：' + fields.targetRole,
+      '- 主要经历：' + [fields.internship, fields.project, fields.content].filter(function (s) { return s && s !== '（未提供）'; }).join('；'),
+      '',
+      '【我的面试记录（流水账）】',
+      '<<<',
+      notes,
+      '>>>',
+      '',
+      '请输出：',
+      '',
+      '## 1. 逐题复盘',
+      '| 面试问题 | 我的回答情况 | 问题类型（内容缺证据/逻辑乱/表达差/疑似夸大/其实答得不错） | 更好的回答框架（STAR，用我的真实经历填） |',
+      '| --- | --- | --- | --- |',
+      '',
+      '## 2. 暴露出的能力短板',
+      '按重要性排序，每条对应一个可执行的补齐动作（1-4 周内能完成的）。',
+      '',
+      '## 3. 高频追问预测更新',
+      '基于这次被问到的问题，预测下一场同类面试最可能追问什么、我该准备什么证据。',
+      '',
+      '## 4. 下次面试前检查清单',
+      '5 条以内，具体可执行。',
+      '',
+      '原则：只基于我的记录和背景分析，不编造我没说过的回答；如果我的记录太简略无法判断，请列出需要我补充的信息，而不是猜。'
+    ].join('\n');
+    extraOutputLabel.textContent = '面试复盘 Prompt（复制去任意 AI 使用）';
+    extraNextSteps.innerHTML = '<b>下一步：</b>复盘结果里"其实答得不错"的部分保留，"疑似夸大"的部分下次别再说。建议把暴露的短板更新进上面的个人背景，下轮生成简历 Prompt 时会更准。';
+    extraOutputWrap.style.display = 'block';
+    extraCopyBtn.style.display = 'inline-block';
+    extraCopyBtn.classList.remove('copied');
+    extraCopyBtn.textContent = '复制 Prompt';
+    extraOutputWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  // ---- 投递记录（本地看板） ----
+  var APPS_KEY = 'careerfit-apps-v1';
+  var appListWrap = document.getElementById('appListWrap');
+
+  function loadApps() {
+    try { return JSON.parse(localStorage.getItem(APPS_KEY)) || []; } catch (e) { return []; }
+  }
+  function saveApps(apps) {
+    try { localStorage.setItem(APPS_KEY, JSON.stringify(apps)); } catch (e) {}
+  }
+  function esc2(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+  function renderApps() {
+    var apps = loadApps();
+    if (apps.length === 0) {
+      appListWrap.innerHTML = '<p class="hint" style="margin-top:12px;">还没有记录。添加第一条投递记录试试。</p>';
+      return;
+    }
+    var html = ['<table id="appTable"><tr><th>日期</th><th>公司</th><th>岗位</th><th>状态</th><th>备注</th><th></th></tr>'];
+    apps.forEach(function (a, i) {
+      html.push('<tr><td>' + esc2(a.date) + '</td><td>' + esc2(a.company) + '</td><td>' + esc2(a.role) + '</td><td>' + esc2(a.status) + '</td><td>' + esc2(a.note) + '</td><td><button type="button" class="del-app" data-i="' + i + '">删除</button></td></tr>');
+    });
+    html.push('</table>');
+    appListWrap.innerHTML = html.join('');
+  }
+
+  appListWrap.addEventListener('click', function (e) {
+    if (e.target && e.target.className === 'del-app') {
+      var apps = loadApps();
+      apps.splice(parseInt(e.target.getAttribute('data-i'), 10), 1);
+      saveApps(apps);
+      renderApps();
+    }
+  });
+
+  document.getElementById('addAppBtn').addEventListener('click', function () {
+    var company = document.getElementById('appCompany').value.trim();
+    var role = document.getElementById('appRole').value.trim();
+    if (!company && !role) return;
+    var apps = loadApps();
+    var d = new Date();
+    apps.unshift({
+      date: d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'),
+      company: company || '（未填）',
+      role: role || '（未填）',
+      status: document.getElementById('appStatus').value,
+      note: document.getElementById('appNote').value.trim()
+    });
+    saveApps(apps);
+    renderApps();
+    document.getElementById('appCompany').value = '';
+    document.getElementById('appRole').value = '';
+    document.getElementById('appNote').value = '';
+  });
+
+  document.getElementById('exportCsvBtn').addEventListener('click', function () {
+    var apps = loadApps();
+    if (apps.length === 0) return;
+    var rows = [['日期', '公司', '岗位', '状态', '备注']];
+    apps.forEach(function (a) { rows.push([a.date, a.company, a.role, a.status, a.note]); });
+    var csv = '﻿' + rows.map(function (r) {
+      return r.map(function (c) { return '"' + String(c).replace(/"/g, '""') + '"'; }).join(',');
+    }).join('\r\n');
+    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'careerfit-applications.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+  });
+
+  renderApps();
+
+  // ---- 示例数据一键填充 ----
+  document.getElementById('sampleBtn').addEventListener('click', function () {
+    if (document.getElementById('jd').value.trim() && !confirm('表单里已有内容，填入示例会覆盖，继续吗？')) return;
+    document.getElementById('direction').value = '新媒体/内容运营';
+    directionSelect.dispatchEvent(new Event('change'));
+    document.getElementById('jd').value = '岗位：内容运营实习生\n岗位职责：\n1. 负责小红书、公众号账号的内容策划与日常运营，参与选题、撰写与发布；\n2. 跟踪内容数据（阅读、互动、涨粉），每周输出数据复盘；\n3. 收集用户反馈，参与社群维护与活动策划。\n任职要求：\n1. 本科在读，专业不限，每周可实习 4 天以上；\n2. 熟练使用 Excel，会用 Canva 或剪映者优先；\n3. 对 AI 工具（ChatGPT、豆包等）有使用经验者优先；\n4. 文字功底好，有个人账号运营经验加分。';
+    document.getElementById('degree').value = '本科汉语言文学专业 大三';
+    document.getElementById('targetRole').value = '内容运营实习生';
+    document.getElementById('internship').value = '';
+    document.getElementById('project').value = '给校学生会公众号供稿 10 篇，其中 2 篇阅读量在全院号里排前列';
+    document.getElementById('campus').value = '文学社宣传委员，负责活动海报和推文';
+    document.getElementById('content').value = '自己运营一个读书笔记小红书账号，发了 30 多篇，攒了一些粉丝（具体数字记不清）';
+    document.getElementById('tools').value = 'Excel（基础）、Canva、剪映';
+    document.getElementById('aiTools').value = '常用豆包和 ChatGPT 改稿子、起标题';
+    document.getElementById('resumeText').value = '负责公众号文章撰写。运营个人小红书账号。';
+    saveDraft();
+    alert('已填入示例数据（虚构的"汉语言大三学生投内容运营实习"）。直接点"生成 Prompt"即可体验完整流程，之后替换成你自己的信息。');
+  });
+
+  // ---- 本地输出质检器（确定性检查，不依赖任何模型） ----
+  var LINT_SECTIONS = [
+    ['A 部分（简历优化结果）', /A[.、\s]*简历优化结果|#\s*A/],
+    ['B 部分（求职建议）', /B[.、\s]*求职建议|#\s*B/],
+    ['岗位要求提取', /岗位要求提取/],
+    ['履历事项挖掘', /履历.{0,4}挖掘/],
+    ['匹配度判断/评分', /匹配度/],
+    ['简历问题诊断', /诊断/],
+    ['保守版', /保守版/],
+    ['增强版', /增强版/],
+    ['真实性检查', /真实性检查/],
+    ['补齐项目建议', /补齐项目|项目建议/],
+    ['行动清单', /行动清单|下一步行动/],
+    ['面试风险提醒', /面试风险|风险提醒/],
+    ['信息来源', /信息来源/]
+  ];
+
+  function lintScores(text) {
+    var issues = [];
+    var caps = [40, 25, 15, 10, 10];
+    var found = [];
+    var re = /(\d{1,3})\s*\/\s*(40|25|15|10)/g, m;
+    while ((m = re.exec(text)) !== null) {
+      found.push([parseInt(m[1], 10), parseInt(m[2], 10)]);
+    }
+    if (found.length === 0) {
+      issues.push(['warn', '没有找到 "分数/上限" 格式的维度评分（如 18/40），可能评分表没按要求输出。']);
+      return issues;
+    }
+    var sum = 0, over = [];
+    found.slice(0, 5).forEach(function (pair) {
+      sum += pair[0];
+      if (pair[0] > pair[1]) over.push(pair[0] + '/' + pair[1]);
+    });
+    if (over.length) issues.push(['bad', '有维度分数超过上限：' + over.join('、') + '。']);
+    var totalMatch = text.match(/(\d{1,3})\s*\/\s*100|总分[^\d]{0,6}(\d{1,3})|综合[^\d]{0,8}(\d{1,3})/);
+    if (totalMatch) {
+      var total = parseInt(totalMatch[1] || totalMatch[2] || totalMatch[3], 10);
+      if (found.length >= 5 && sum !== total) {
+        issues.push(['bad', '五个维度加总 = ' + sum + '，但总分写的是 ' + total + '，加总对不上。']);
+      } else if (found.length >= 5) {
+        issues.push(['ok', '评分加总正确：' + sum + '/100，各维度均未超上限。']);
+      }
+    } else if (found.length >= 5) {
+      issues.push(['warn', '找到了维度分数但没找到总分，建议让 AI 补上总分。']);
+    }
+    return issues;
+  }
+
+  function lintNumbers(text, userInput) {
+    // 模板自带的数字不算；检查 AI 输出里出现、但用户输入里没有的"具体数字"
+    var TEMPLATE_NUMS = { '40': 1, '25': 1, '15': 1, '10': 1, '100': 1, '0': 1, '1': 1, '2': 1, '3': 1, '4': 1, '5': 1, '6': 1, '7': 1, '8': 1, '9': 1, '11': 1 };
+    var suspects = {};
+    var re = /\d+(?:\.\d+)?(?:%|％|万|千|亿|人|篇|场|次|份|期|页|条|款|个|名|倍)?/g, m;
+    while ((m = re.exec(text)) !== null) {
+      var token = m[0];
+      var bare = token.replace(/[%％万千亿人篇场次份期页条款个名倍]/g, '');
+      if (TEMPLATE_NUMS[bare] && bare === token) continue;
+      if (token.length < 2 && !/[%％万千亿人篇场次份期页条款个名倍]/.test(token)) continue;
+      if (userInput.indexOf(bare) === -1) suspects[token] = true;
+    }
+    var list = Object.keys(suspects).slice(0, 12);
+    if (list.length === 0) return [['ok', '没有发现你未提供过的可疑数字。']];
+    return [['warn', '这些数字在你填写的 JD/背景里没有出现过，请逐个核对是否属实：' + list.join('、') + '（有可能是 AI 合理换算，也可能是编造）。']];
+  }
+
+  var lintBtn = document.getElementById('lintBtn');
+  var lintResult = document.getElementById('lintResult');
+
+  lintBtn.addEventListener('click', function () {
+    var text = document.getElementById('aiOutput').value.trim();
+    if (!text) {
+      refineWarnMsg.style.display = 'block';
+      return;
+    }
+    refineWarnMsg.style.display = 'none';
+    var results = [];
+    // 0. 识别输出类型
+    var lintType = 'main';
+    if (/打招呼语/.test(text)) lintType = 'greeting';
+    else if (/岗位\s*1/.test(text) && /岗位\s*2/.test(text)) lintType = 'compare';
+    var sections = LINT_SECTIONS;
+    if (lintType === 'greeting') {
+      sections = [
+        ['版本 A', /版本\s*A/], ['版本 B', /版本\s*B/], ['版本 C', /版本\s*C/],
+        ['求职信/自我介绍', /求职信|自我介绍/], ['引用经历标注', /引用经历/], ['真实性检查', /真实性检查/]
+      ];
+      results.push(['ok', '识别为：打招呼语/求职信输出，按对应标准检查。']);
+    } else if (lintType === 'compare') {
+      sections = [
+        ['岗位要求对比表', /对比/], ['匹配度排序', /匹配度/], ['投递策略', /投递策略|优先投递/],
+        ['差异化调整', /差异化|调整/], ['信息来源', /信息来源/]
+      ];
+      results.push(['ok', '识别为：多 JD 对比输出，按对应标准检查。']);
+    }
+    // 1. 章节完整性
+    var missing = [];
+    sections.forEach(function (s) {
+      if (!s[1].test(text)) missing.push(s[0]);
+    });
+    if (missing.length === 0) {
+      results.push(['ok', '结构完整：' + sections.length + ' 个关键章节全部找到。']);
+    } else if (missing.length <= 4) {
+      results.push(['warn', '缺少章节：' + missing.join('、') + '。（如果你只粘贴了部分输出，可忽略）']);
+    } else {
+      results.push(['bad', '缺少较多章节（' + missing.length + ' 个）：' + missing.join('、') + '。输出可能没按要求的结构生成。']);
+    }
+    // 2. 评分校验（主流程输出才有维度评分）
+    if (lintType === 'main') {
+      results = results.concat(lintScores(text));
+      // 2.5 "建议混进简历"检测：保守版部分不应出现建议性措辞
+      var consMatch = text.match(/保守版([\s\S]*?)(增强版|##|$)/);
+      if (consMatch) {
+        var advice = consMatch[1].match(/建议你|建议先|可以尝试|规划中|计划(完成|开展|做)|未来可以|预计将|打算/g);
+        if (advice) {
+          results.push(['warn', '保守版简历内容里出现了建议性措辞（' + advice.slice(0, 3).join('、') + '……），疑似把"求职建议"混进了简历正文，请检查。']);
+        }
+      }
+    }
+    // 3. 数字核对
+    var userInput = ['jd', 'degree', 'targetRole', 'internship', 'project', 'campus', 'content', 'tools', 'aiTools', 'resumeText']
+      .map(function (id) { return document.getElementById(id).value; }).join('\n');
+    results = results.concat(lintNumbers(text, userInput));
+
+    // 渲染 + 自动勾选对应问题
+    var iconMap = { ok: '✅', warn: '⚠️', bad: '❌' };
+    lintResult.innerHTML = results.map(function (r) {
+      return '<div>' + iconMap[r[0]] + ' ' + r[1].replace(/</g, '&lt;') + '</div>';
+    }).join('') + '<div style="margin-top:6px;color:#6e6e6e;">质检在本地完成，只能发现"格式与数字"类硬伤；内容好坏仍需你自己判断。发现的问题已自动勾选到下方，点"生成调整 Prompt"即可让 AI 修正。</div>';
+    lintResult.style.display = 'block';
+
+    function autoCheck(keyword) {
+      issueCheckboxes.forEach(function (cb) {
+        if (cb.value.indexOf(keyword) !== -1) cb.checked = true;
+      });
+    }
+    results.forEach(function (r) {
+      if (r[0] === 'ok') return;
+      var msg = r[1];
+      if (msg.indexOf('章节') !== -1) autoCheck('格式和结构');
+      if (msg.indexOf('超过上限') !== -1 || msg.indexOf('对不上') !== -1 || msg.indexOf('评分表') !== -1) autoCheck('匹配度打分');
+      if (msg.indexOf('数字') !== -1 && msg.indexOf('核对') !== -1) autoCheck('编造');
+      if (msg.indexOf('混进') !== -1) autoCheck('混在一起');
+    });
+  });
+
+  // ---- 交叉复核 Prompt（让另一个 AI 审查输出） ----
+  document.getElementById('crossBtn').addEventListener('click', function () {
+    var aiOutputVal = document.getElementById('aiOutput').value.trim();
+    if (!aiOutputVal) {
+      refineWarnMsg.style.display = 'block';
+      return;
+    }
+    refineWarnMsg.style.display = 'none';
+    var fields = collectFields();
+    var jdBlock = fields.jd ? ['【目标岗位 JD】', '<<<', fields.jd, '>>>', ''] : ['（我没有重新粘贴 JD，请基于待审报告中引用的 JD 信息判断，无法判断的地方标注"需要原始 JD 确认"。）', ''];
+    var lines = [
+      '你是一名严格的简历真实性与质量审查员。下面是另一个 AI 根据我的 JD 和个人背景生成的简历优化报告，请你独立审查它，不要重写全文。',
+      '',
+      '审查原则：',
+      '1. 重点核对报告中的具体数字、机构名、项目名是否都能在我的个人背景里找到出处；找不到的一律列为"疑似编造"。',
+      '2. 按评分锚点复核匹配度打分：几乎无证据 ≤ 满分 40%；仅可迁移证据 40%-70%；直接对口证据 >70%。指出偏高或偏低的维度。',
+      '3. 检查"简历内容"和"求职建议"是否混在一起。',
+      '4. 你的任务是挑问题，不是安慰我；没有问题的部分简单确认即可。',
+      ''
+    ].concat(jdBlock).concat([
+      '【我的个人背景】',
+      '- 学历/专业：' + fields.degree,
+      '- 目标岗位：' + fields.targetRole,
+      '- 过往实习：' + fields.internship,
+      '- 项目经历：' + fields.project,
+      '- 校园/社团经历：' + fields.campus,
+      '- 内容/运营经历：' + fields.content,
+      '- 会使用的工具：' + fields.tools,
+      '- AI 工具使用经历：' + fields.aiTools,
+      '',
+      '【待审查的报告】',
+      '<<<',
+      aiOutputVal,
+      '>>>',
+      '',
+      '请输出：',
+      '',
+      '## 1. 问题清单',
+      '| 问题 | 所在位置 | 类型（疑似编造/评分虚高或虚低/遗漏/建议混入简历/表达问题） | 严重程度（高/中/低） | 修改建议 |',
+      '| --- | --- | --- | --- | --- |',
+      '',
+      '## 2. 数字与事实核对',
+      '逐条列出报告中的具体数字和专有名词，标注：我的背景里有出处 / 疑似编造 / 合理推断但需我确认。',
+      '',
+      '## 3. 评分复核',
+      '按锚点重新给五个维度打分，和原报告分数并排对比，解释差异原因。',
+      '',
+      '## 4. 总体结论',
+      '三选一：可直接采用 / 修改后可采用（列出必改项）/ 建议重新生成（说明原因）。'
+    ]);
+    refineOutputText.value = lines.join('\n');
+    document.getElementById('refineOutputLabel').textContent = '交叉复核 Prompt（复制后发给另一个 AI，让它审查上面的报告）';
+    refineOutputCard.style.display = 'block';
+    refineCopyBtn.style.display = 'inline-block';
+    refineCopyBtn.classList.remove('copied');
+    refineCopyBtn.textContent = '复制 Prompt';
+    refineOutputCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  // ---- 背景 JSON 导出 / 导入 ----
+  var BG_JSON_VERSION = 'careerfit-bg-v1';
+
+  document.getElementById('exportJsonBtn').addEventListener('click', function () {
+    var data = { version: BG_JSON_VERSION, savedAt: new Date().toISOString(), fields: {} };
+    draftFields.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) data.fields[id] = el.value;
+    });
+    var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'careerfit-background.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+  });
+
+  var importJsonFile = document.getElementById('importJsonFile');
+  document.getElementById('importJsonBtn').addEventListener('click', function () {
+    importJsonFile.click();
+  });
+  importJsonFile.addEventListener('change', function () {
+    var file = importJsonFile.files && importJsonFile.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      try {
+        var data = JSON.parse(reader.result);
+        var fields = data && data.fields;
+        if (!fields || typeof fields !== 'object') throw new Error('bad format');
+        draftFields.forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el && typeof fields[id] === 'string') el.value = fields[id];
+        });
+        saveDraft();
+        alert('背景已导入。请检查各项内容后再生成 Prompt。');
+      } catch (e) {
+        alert('导入失败：这个文件不是本工具导出的背景 JSON，或文件已损坏。');
+      }
+      importJsonFile.value = '';
+    };
+    reader.readAsText(file);
+  });
+
+  // ---- 多 JD 对比 Prompt ----
+  function buildComparePrompt(fields, jdList) {
+    var lines = [
+      '你是一名严谨的求职顾问。我在同时考虑 ' + jdList.length + ' 个岗位，需要你基于我的真实背景对比这些 JD，帮我判断优先投哪个。',
+      '',
+      '重要原则：',
+      '1. 只基于我提供的背景判断，不允许编造我没有的经历。',
+      '2. 每个结论都要给出依据（来自哪个 JD 的哪条要求、或我的哪条经历）。',
+      '3. 不要为了让结论好看而抬高匹配度；差距大就直说。',
+      '4. 最终选择权在我，你只提供排序建议和理由。',
+      ''
+    ];
+    jdList.forEach(function (jd, i) {
+      lines.push('【岗位 ' + (i + 1) + ' JD】');
+      lines.push('<<<');
+      lines.push(jd);
+      lines.push('>>>');
+      lines.push('');
+    });
+    lines = lines.concat([
+      backgroundBlock(fields),
+      '- 当前简历里想优化的内容：' + fields.resumeText,
+      '',
+      '请输出：',
+      '',
+      '## 1. 岗位要求对比表',
+      '',
+      '| 对比维度 | 岗位 1 | 岗位 2 | 岗位 3（如有） |',
+      '| --- | --- | --- | --- |',
+      '| 核心职责 |  |  |  |',
+      '| 必备技能 |  |  |  |',
+      '| 加分项 |  |  |  |',
+      '| 对我最大的门槛 |  |  |  |',
+      '',
+      '## 2. 我的匹配度排序',
+      '',
+      '按匹配度从高到低排序，每个岗位给出 0-100 分和三条具体依据（引用 JD 原文要求 + 我的对应经历）。',
+      '',
+      '## 3. 投递策略建议',
+      '',
+      '- 优先投递哪个，为什么',
+      '- 哪个可以同时投但期望要放低，为什么',
+      '- 哪个建议先补齐能力再投（如有），需要补什么',
+      '',
+      '## 4. 同一份简历的差异化调整',
+      '',
+      '如果我用同一份简历投这几个岗位，请分别指出针对每个岗位最需要调整的 2-3 处表达（只调整表达重点，不编造内容）。',
+      '',
+      '## 5. 信息来源说明',
+      '',
+      '关键判断请标注来源：JD 原文 / 我的经历 / 通用求职判断。涉及公司近况、薪资等最新信息，请写"需要补充公开信息后再判断"。'
+    ]);
+    return lines.join('\n');
+  }
+
+  var compareWarnMsg = document.getElementById('compareWarnMsg');
+  document.getElementById('compareBtn').addEventListener('click', function () {
+    var fields = collectFields();
+    var extraRaw = document.getElementById('extraJds').value.trim();
+    var jdList = [];
+    if (fields.jd) jdList.push(fields.jd);
+    if (extraRaw) {
+      extraRaw.split(/\n\s*---\s*\n/).forEach(function (jd) {
+        if (jd.trim()) jdList.push(jd.trim());
+      });
+    }
+    extraWarnMsg.style.display = 'none';
+    if (jdList.length < 2) {
+      compareWarnMsg.style.display = 'block';
+      return;
+    }
+    compareWarnMsg.style.display = 'none';
+    extraOutputText.value = buildComparePrompt(fields, jdList.slice(0, 3));
+    extraOutputLabel.textContent = '多 JD 对比 Prompt（共 ' + Math.min(jdList.length, 3) + ' 个岗位，复制去任意 AI 使用）';
+    extraNextSteps.innerHTML = '<b>下一步：</b>粘贴给 AI 后会得到岗位对比表、匹配度排序、投递策略和每个岗位的简历调整点。记住排序只是建议，最终由你自己决定投哪个。';
+    extraOutputWrap.style.display = 'block';
+    extraCopyBtn.style.display = 'inline-block';
+    extraCopyBtn.classList.remove('copied');
+    extraCopyBtn.textContent = '复制 Prompt';
+    extraOutputWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  // ---- Step 6: 简历打印页 ----
+  function escapeHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function renderResumeHtml(name, contact, body) {
+    var html = [];
+    if (name) html.push('<h1>' + escapeHtml(name) + '</h1>');
+    if (contact) html.push('<p class="contact">' + escapeHtml(contact) + '</p>');
+    var inList = false;
+    body.split('\n').forEach(function (raw) {
+      var t = raw.trim();
+      if (inList && !/^- /.test(t)) { html.push('</ul>'); inList = false; }
+      if (!t) return;
+      if (/^## /.test(t)) {
+        html.push('<h2>' + escapeHtml(t.slice(3)) + '</h2>');
+      } else if (/^# /.test(t)) {
+        html.push('<h2>' + escapeHtml(t.slice(2)) + '</h2>');
+      } else if (/^- /.test(t)) {
+        if (!inList) { html.push('<ul>'); inList = true; }
+        html.push('<li>' + escapeHtml(t.slice(2)) + '</li>');
+      } else {
+        html.push('<p>' + escapeHtml(t) + '</p>');
+      }
+    });
+    if (inList) html.push('</ul>');
+    return html.join('\n');
+  }
+
+  var printWarnMsg = document.getElementById('printWarnMsg');
+  document.getElementById('printBtn').addEventListener('click', function () {
+    var body = document.getElementById('printResume').value.trim();
+    if (!body) {
+      printWarnMsg.style.display = 'block';
+      return;
+    }
+    printWarnMsg.style.display = 'none';
+    var name = document.getElementById('printName').value.trim();
+    var contact = document.getElementById('printContact').value.trim();
+    var w = window.open('', '_blank');
+    if (!w) {
+      alert('浏览器拦截了新窗口，请允许本页面打开弹出窗口后重试。');
+      return;
+    }
+    var doc = [
+      '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">',
+      '<title>' + escapeHtml(name || '简历') + ' - 简历打印页</title>',
+      '<style>',
+      'body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; color: #1a1a1a; line-height: 1.55; max-width: 720px; margin: 0 auto; padding: 40px 32px; font-size: 13.5px; }',
+      'h1 { font-size: 24px; margin: 0 0 4px; }',
+      '.contact { color: #555; margin: 0 0 18px; font-size: 13px; }',
+      'h2 { font-size: 15px; border-bottom: 1.5px solid #1a1a1a; padding-bottom: 4px; margin: 20px 0 8px; }',
+      'ul { margin: 6px 0; padding-left: 20px; }',
+      'li { margin-bottom: 4px; }',
+      '.toolbar { position: fixed; top: 12px; right: 12px; }',
+      '.toolbar button { font-size: 14px; padding: 8px 18px; border: none; border-radius: 8px; background: #1c8a5c; color: #fff; cursor: pointer; }',
+      '@media print { .toolbar { display: none; } body { padding: 0; } }',
+      '</style></head><body>',
+      '<div class="toolbar"><button onclick="window.print()">打印 / 存为 PDF</button></div>',
+      renderResumeHtml(name, contact, body),
+      '</body></html>'
+    ].join('\n');
+    w.document.open();
+    w.document.write(doc);
+    w.document.close();
+  });
+})();
+</script>
+</body>
+</html>
